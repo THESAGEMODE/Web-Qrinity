@@ -1,0 +1,78 @@
+/* =========================================================
+   RESPONSIVE DESIGN
+========================================================= */
+
+/* Breakpoint: 1400px */
+@media (max-width: 1400px) {
+    .container { max-width: 1140px; }
+}
+
+/* Breakpoint: 1200px */
+@media (max-width: 1200px) {
+    .container { max-width: 960px; }
+    .hero-left h1 { font-size: 3rem; }
+    .features-grid, .template-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* Breakpoint: 992px */
+@media (max-width: 992px) {
+    .container { max-width: 720px; }
+    .hero-container { grid-template-columns: 1fr; text-align: center; }
+    .hero-left { margin-bottom: 50px; }
+    .hero-buttons { justify-content: center; }
+    .mockup-container { height: 400px; }
+    .mockup.laptop { left: 50%; transform: translateX(-50%); width: 80%; }
+    .mockup.phone { left: 10%; width: 25%; }
+    
+    .stats-card { flex-wrap: wrap; gap: 30px; }
+    .stat-item { width: 45%; text-align: center; }
+    
+    .features-grid, .template-grid { grid-template-columns: repeat(2, 1fr); }
+    .benefits-grid, .testimonial-grid { grid-template-columns: repeat(2, 1fr); }
+    
+    .banner-card { flex-direction: column; text-align: center; padding: 40px; }
+    .banner-text { margin-bottom: 30px; }
+    
+    .footer-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* Breakpoint: 768px */
+@media (max-width: 768px) {
+    .container { max-width: 540px; }
+    .section-padding { padding: 60px 0; }
+    
+    /* Mobile Menu */
+    .hamburger { display: block; }
+    .navbar {
+        position: fixed; top: -100vh; left: 0; width: 100%;
+        background-color: var(--bg);
+        flex-direction: column; text-align: center;
+        transition: 0.5s ease-in-out;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        padding: 80px 0 40px; z-index: 999;
+    }
+    .navbar.active { top: 0; }
+    .nav-menu { flex-direction: column; gap: 20px; }
+    .hamburger.active .bar:nth-child(2) { opacity: 0; }
+    .hamburger.active .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+    .hamburger.active .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+    
+    .nav-btn { display: none; }
+    
+    .hero-left h1 { font-size: 2.5rem; }
+    .stats-card { padding: 40px 20px; }
+    
+    .benefits-grid, .testimonial-grid { grid-template-columns: 1fr; }
+}
+
+/* Breakpoint: 576px */
+@media (max-width: 576px) {
+    .hero-buttons { flex-direction: column; width: 100%; }
+    .hero-buttons .btn { width: 100%; text-align: center; }
+    .stat-item { width: 100%; }
+    .features-grid, .template-grid { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr; }
+    .footer-bottom { flex-direction: column; text-align: center; gap: 15px; }
+    .qr-card { padding: 40px 20px; }
+    .cta-card h2 { font-size: 2rem; }
+}
