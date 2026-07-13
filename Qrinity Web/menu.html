@@ -949,5 +949,191 @@
         </div>
       </div>
     </div>
+    <!-- ================= ADD MENU MODAL ================= -->
+    <div class="modal-overlay" id="addMenuModal">
+      <div class="modal-container">
+        <div class="modal-header">
+          <h2>Add New Menu</h2>
+          <button class="close-modal-btn" id="closeModalBtn">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+          </button>
+        </div>
+
+        <div class="modal-body">
+          <h3 class="section-title">Basic Information</h3>
+
+          <div class="form-grid">
+            <!-- Kolom Kiri -->
+            <div class="form-col">
+              <div class="form-group">
+                <label>Menu Name <span class="text-danger">*</span></label>
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="e.g. Grilled Salmon"
+                />
+              </div>
+
+              <div class="form-group">
+                <label>Category <span class="text-danger">*</span></label>
+                <div class="custom-select-wrapper">
+                  <select class="form-control">
+                    <option value="" disabled selected>Select category</option>
+                    <option value="main">Main Course</option>
+                    <option value="snacks">Snacks</option>
+                    <option value="drinks">Drinks</option>
+                  </select>
+                  <svg
+                    class="select-icon"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <polyline points="6 9 12 15 18 9"></polyline>
+                  </svg>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label>Price <span class="text-danger">*</span></label>
+                <div class="input-prefix-group">
+                  <span class="input-prefix">Rp</span>
+                  <input type="number" class="form-control" placeholder="0" />
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label>Description</label>
+                <textarea
+                  class="form-control"
+                  rows="4"
+                  placeholder="Describe this menu item..."
+                ></textarea>
+                <div class="char-counter">0/200</div>
+              </div>
+            </div>
+
+            <!-- Kolom Kanan -->
+            <div class="form-col">
+              <div class="form-group">
+                <label>Menu Image <span class="text-danger">*</span></label>
+                <div class="upload-dropzone">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="17 8 12 3 7 8"></polyline>
+                    <line x1="12" y1="3" x2="12" y2="15"></line>
+                  </svg>
+                  <span class="upload-title">Upload image</span>
+                  <span class="upload-subtitle"
+                    >or drag and drop<br />PNG, JPG up to 2MB</span
+                  >
+                </div>
+              </div>
+
+              <div class="form-group mb-custom">
+                <label>Status</label>
+                <div class="availability-toggle-group">
+                  <label class="switch-toggle-widget">
+                    <input type="checkbox" checked />
+                    <span class="slider-round-object"></span>
+                  </label>
+                  <span class="availability-status-label status-bold"
+                    >Available</span
+                  >
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label>Spicy Level</label>
+                <div class="custom-select-wrapper">
+                  <!-- Ikon Cabai SVG -->
+                  <svg
+                    class="spicy-icon"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <path
+                      d="M8 10c0-3.31 2.69-6 6-6s6 2.69 6 6-2.69 6-6 6-6-2.69-6-6z"
+                      transform="rotate(45 12 12)"
+                    ></path>
+                    <path
+                      d="M12 21c-4.97 0-9-4.03-9-9 0-3.13 1.6-5.88 4-7.42"
+                    ></path>
+                  </svg>
+                  <select class="form-control select-with-icon">
+                    <option value="not_spicy" selected>Not Spicy</option>
+                    <option value="mild">Mild</option>
+                    <option value="hot">Hot</option>
+                  </select>
+                  <svg
+                    class="select-icon"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <polyline points="6 9 12 15 18 9"></polyline>
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <hr class="modal-divider" />
+
+          <h3 class="section-title">Additional Information (Optional)</h3>
+
+          <div class="form-row-3">
+            <div class="form-group">
+              <label>Preparation Time</label>
+              <input
+                type="text"
+                class="form-control"
+                placeholder="e.g. 15-20 mins"
+              />
+            </div>
+            <div class="form-group">
+              <label>Calories</label>
+              <input
+                type="text"
+                class="form-control"
+                placeholder="e.g. 250 kcal"
+              />
+            </div>
+            <div class="form-group tag-group">
+              <label>Tags</label>
+              <input
+                type="text"
+                class="form-control"
+                placeholder="e.g. Healthy, Popular"
+              />
+              <small class="helper-text">Separate tags with commas</small>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button class="btn-cancel" id="cancelModalBtn">Cancel</button>
+          <button class="btn-save">Save Menu</button>
+        </div>
+      </div>
+    </div>
+    <script src="js/menu.js"></script>
   </body>
 </html>

@@ -383,6 +383,103 @@ input:checked + .slider:before {
   color: #9ca3af;
 }
 
+/* =========================================================
+   SETTINGS INNER SIDEBAR LAYOUT
+   ========================================================= */
+.settings-layout {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 32px;
+  align-items: start;
+}
+
+.settings-sidebar-inner {
+  background-color: transparent;
+}
+
+.settings-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.settings-nav-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  text-decoration: none;
+  color: #4b5563;
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  border-left: 3px solid transparent;
+}
+
+.settings-nav-item svg {
+  width: 18px;
+  height: 18px;
+  color: #6b7280;
+  transition: color 0.2s ease;
+}
+
+.settings-nav-item:hover {
+  background-color: #f3f4f6;
+  color: #1f2937;
+}
+
+.settings-nav-item:hover svg {
+  color: #4b5563;
+}
+
+/* Status Active (Ungu dengan Border Kiri) */
+.settings-nav-item.active {
+  background-color: #f5f3ff;
+  color: #5c33e3;
+  font-weight: 600;
+  border-left: 3px solid #5c33e3;
+  border-radius: 0 8px 8px 0; /* Meratakan sudut kiri yang bersentuhan dengan border */
+}
+
+.settings-nav-item.active svg {
+  color: #5c33e3;
+}
+
+/* =========================================================
+   RESPONSIVE (Untuk Mobile/Tablet)
+   ========================================================= */
+@media (max-width: 992px) {
+  .settings-layout {
+    grid-template-columns: 1fr; /* Berubah menjadi 1 kolom tumpuk atas-bawah */
+    gap: 20px;
+  }
+
+  .settings-nav {
+    flex-direction: row;
+    overflow-x: auto;
+    padding-bottom: 8px;
+    /* Menyembunyikan scrollbar namun tetap bisa di-scroll horizontal */
+    scrollbar-width: none;
+  }
+  .settings-nav::-webkit-scrollbar {
+    display: none;
+  }
+
+  .settings-nav-item {
+    white-space: nowrap;
+    border-left: none;
+    border-bottom: 3px solid transparent;
+    border-radius: 8px;
+  }
+
+  .settings-nav-item.active {
+    border-left: none;
+    border-bottom: 3px solid #5c33e3;
+    border-radius: 8px 8px 0 0;
+  }
+}
+
 /* Responsive */
 @media (max-width: 992px) {
   .settings-layout {
@@ -395,4 +492,72 @@ input:checked + .slider:before {
     flex-direction: column;
     gap: 0;
   }
+}
+
+/* =========================================================
+   SETTINGS HORIZONTAL TABS LAYOUT
+   ========================================================= */
+.settings-layout-horizontal {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.settings-nav-horizontal {
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+  border-bottom: 1px solid #ececf2;
+  overflow-x: auto;
+
+  /* Sembunyikan scrollbar tapi tetap bisa digeser di layar kecil */
+  scrollbar-width: none;
+}
+.settings-nav-horizontal::-webkit-scrollbar {
+  display: none;
+}
+
+.settings-nav-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px;
+  text-decoration: none;
+  color: #6b7280;
+  font-size: 14px;
+  font-weight: 500;
+  white-space: nowrap; /* Mencegah teks turun ke bawah */
+  border-bottom: 3px solid transparent;
+  transition: all 0.2s ease;
+  margin-bottom: -1px; /* Agar border menyatu dengan garis bawah container */
+}
+
+.settings-nav-item svg {
+  width: 18px;
+  height: 18px;
+  color: #9ca3af;
+  transition: color 0.2s ease;
+}
+
+.settings-nav-item:hover {
+  color: #1f2937;
+}
+.settings-nav-item:hover svg {
+  color: #4b5563;
+}
+
+/* Status Active (Garis Ungu di Bawah) */
+.settings-nav-item.active {
+  color: #5c33e3;
+  font-weight: 600;
+  border-bottom: 3px solid #5c33e3;
+}
+
+.settings-nav-item.active svg {
+  color: #5c33e3;
+}
+
+/* Tambahan: Pastikan area konten form utama mengambil sisa lebar penuh */
+.settings-main-wrapper {
+  width: 100%;
 }

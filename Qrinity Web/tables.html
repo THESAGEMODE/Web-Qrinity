@@ -474,6 +474,98 @@
         </div>
       </div>
     </div>
+    <div class="modal-overlay" id="addTableModal">
+      <div class="modal-container-sm">
+        <div class="modal-header">
+          <h2>Add New Table</h2>
+          <button class="close-modal-btn" id="closeTableModalBtn">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+          </button>
+        </div>
+
+        <div class="modal-body">
+          <div class="form-group mb-16">
+            <label>Table Name/Number <span class="text-danger">*</span></label>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="e.g. T-01 or VIP-1"
+            />
+          </div>
+
+          <div class="form-row-2 mb-16">
+            <div class="form-group">
+              <label>Seating Capacity <span class="text-danger">*</span></label>
+              <input type="number" class="form-control" placeholder="e.g. 4" />
+            </div>
+            <div class="form-group">
+              <label>Area/Location <span class="text-danger">*</span></label>
+              <div class="custom-select-wrapper">
+                <select class="form-control">
+                  <option value="main" selected>Main Dining</option>
+                  <option value="patio">Patio</option>
+                  <option value="vip">VIP Room</option>
+                </select>
+                <svg
+                  class="select-icon"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group mb-16">
+            <label>Status</label>
+            <div class="availability-toggle-group">
+              <label class="switch-toggle-widget">
+                <input type="checkbox" checked />
+                <span class="slider-round-object"></span>
+              </label>
+              <span class="availability-status-label status-bold"
+                >Available</span
+              >
+            </div>
+          </div>
+
+          <div class="checkbox-group">
+            <label class="custom-checkbox-wrapper">
+              <input type="checkbox" checked />
+              <span class="custom-checkmark">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="white"
+                  stroke-width="3"
+                >
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+              </span>
+              <span class="checkbox-label-text"
+                >Automatically generate a QR code for this table</span
+              >
+            </label>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button class="btn-cancel" id="cancelTableModalBtn">Cancel</button>
+          <button class="btn-save">Add Table</button>
+        </div>
+      </div>
+    </div>
 
     <script>
       const toggleSidebar = document.getElementById("toggleSidebar");
@@ -483,6 +575,45 @@
           sidebar.classList.toggle("mobile-open");
         });
       }
+
+      document.addEventListener("DOMContentLoaded", () => {
+        // Tangkap elemen modal dan tombol
+        const addTableModal = document.getElementById("addTableModal");
+        const btnAddTable = document.querySelector(
+          ".btn-primary-action-purple",
+        );
+        const closeTableModalBtn =
+          document.getElementById("closeTableModalBtn");
+        const cancelTableModalBtn = document.getElementById(
+          "cancelTableModalBtn",
+        );
+
+        // Fungsi membuka modal
+        if (btnAddTable) {
+          btnAddTable.addEventListener("click", () => {
+            addTableModal.classList.add("active");
+            document.body.style.overflow = "hidden"; // Menghindari background scrolling
+          });
+        }
+
+        // Fungsi menutup modal
+        const closeTableModal = () => {
+          addTableModal.classList.remove("active");
+          document.body.style.overflow = "auto";
+        };
+
+        if (closeTableModalBtn)
+          closeTableModalBtn.addEventListener("click", closeTableModal);
+        if (cancelTableModalBtn)
+          cancelTableModalBtn.addEventListener("click", closeTableModal);
+
+        // Menutup modal jika user klik area gelap di luarnya
+        window.addEventListener("click", (e) => {
+          if (e.target === addTableModal) {
+            closeTableModal();
+          }
+        });
+      });
     </script>
   </body>
 </html>

@@ -271,3 +271,255 @@
 .link-delete:hover {
   color: #dc2626;
 }
+
+/* =========================================================
+   ADD TABLE MODAL STYLES
+   ========================================================= */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(17, 24, 39, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+.modal-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal-container-sm {
+  background: #ffffff;
+  width: 100%;
+  max-width: 480px; /* Lebih kecil dibanding modal menu */
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  transform: translateY(20px);
+  transition: transform 0.3s ease;
+}
+.modal-overlay.active .modal-container-sm {
+  transform: translateY(0);
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px;
+}
+.modal-header h2 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #1e1e2d;
+  margin: 0;
+}
+.close-modal-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #6b7280;
+}
+.close-modal-btn svg {
+  width: 20px;
+  height: 20px;
+}
+
+.modal-body {
+  padding: 0 24px;
+}
+
+.mb-16 {
+  margin-bottom: 16px;
+}
+
+.form-row-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.form-group label {
+  font-size: 12px;
+  font-weight: 600;
+  color: #1e1e2d;
+}
+.text-danger {
+  color: #ef4444;
+}
+
+.form-control {
+  padding: 10px 14px;
+  border: 1px solid #ececf2;
+  border-radius: 8px;
+  font-size: 13px;
+  font-family: inherit;
+  outline: none;
+  color: #1e1e2d;
+  width: 100%;
+  box-sizing: border-box;
+}
+.form-control::placeholder {
+  color: #9ca3af;
+}
+.form-control:focus {
+  border-color: #6d3ef3;
+}
+
+.custom-select-wrapper {
+  position: relative;
+}
+.custom-select-wrapper select {
+  appearance: none;
+  cursor: pointer;
+}
+.custom-select-wrapper .select-icon {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  color: #6b7280;
+  pointer-events: none;
+}
+
+/* Toggle Switch Styles */
+.availability-toggle-group {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.switch-toggle-widget {
+  position: relative;
+  display: inline-block;
+  width: 36px;
+  height: 20px;
+}
+.switch-toggle-widget input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+.slider-round-object {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #d1d5db;
+  transition: 0.4s;
+  border-radius: 34px;
+}
+.slider-round-object:before {
+  position: absolute;
+  content: "";
+  height: 14px;
+  width: 14px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: 0.4s;
+  border-radius: 50%;
+}
+.switch-toggle-widget input:checked + .slider-round-object {
+  background-color: #6d3ef3;
+}
+.switch-toggle-widget input:checked + .slider-round-object:before {
+  transform: translateX(16px);
+}
+.status-bold {
+  color: #1e1e2d;
+  font-weight: 600;
+  font-size: 13px;
+}
+
+/* Custom Checkbox */
+.checkbox-group {
+  margin-top: 24px;
+  margin-bottom: 8px;
+}
+.custom-checkbox-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+.custom-checkbox-wrapper input {
+  display: none;
+}
+.custom-checkmark {
+  width: 18px;
+  height: 18px;
+  border: 1.5px solid #d1d5db;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+.custom-checkmark svg {
+  width: 12px;
+  height: 12px;
+  opacity: 0;
+}
+.custom-checkbox-wrapper input:checked + .custom-checkmark {
+  background-color: #6d3ef3;
+  border-color: #6d3ef3;
+}
+.custom-checkbox-wrapper input:checked + .custom-checkmark svg {
+  opacity: 1;
+}
+.checkbox-label-text {
+  font-size: 13px;
+  color: #4b5563;
+}
+
+/* Footer Buttons */
+.modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  padding: 24px;
+  margin-top: 8px;
+}
+.btn-cancel {
+  padding: 10px 20px;
+  border: 1px solid #ececf2;
+  background-color: #fff;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #4b5563;
+  cursor: pointer;
+}
+.btn-save {
+  padding: 10px 20px;
+  border: none;
+  background-color: #6d3ef3;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #fff;
+  cursor: pointer;
+}
+
+@media (max-width: 600px) {
+  .form-row-2 {
+    grid-template-columns: 1fr;
+  }
+}
