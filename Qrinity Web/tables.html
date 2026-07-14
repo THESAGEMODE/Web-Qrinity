@@ -270,7 +270,11 @@
               </p>
             </div>
             <div>
-              <button class="btn-primary-action-purple">
+              <button
+                id="openAddTableBtn"
+                class="btn-primary-action-purple"
+                type="button"
+              >
                 <span class="btn-icon-plus">+</span> Add New Table
               </button>
             </div>
@@ -326,7 +330,7 @@
             </div>
           </div>
 
-          <div class="tables-card-grid">
+          <div id="tablesGrid" class="tables-card-grid">
             <div class="tbl-custom-card">
               <div class="tbl-card-header">
                 <h3 class="tbl-name">Table 01</h3>
@@ -495,6 +499,7 @@
           <div class="form-group mb-16">
             <label>Table Name/Number <span class="text-danger">*</span></label>
             <input
+              id="tableNameInput"
               type="text"
               class="form-control"
               placeholder="e.g. T-01 or VIP-1"
@@ -504,15 +509,21 @@
           <div class="form-row-2 mb-16">
             <div class="form-group">
               <label>Seating Capacity <span class="text-danger">*</span></label>
-              <input type="number" class="form-control" placeholder="e.g. 4" />
+              <input
+                id="tableCapacityInput"
+                type="number"
+                class="form-control"
+                placeholder="e.g. 4"
+                min="1"
+              />
             </div>
             <div class="form-group">
               <label>Area/Location <span class="text-danger">*</span></label>
               <div class="custom-select-wrapper">
-                <select class="form-control">
-                  <option value="main" selected>Main Dining</option>
-                  <option value="patio">Patio</option>
-                  <option value="vip">VIP Room</option>
+                <select id="tableAreaInput" class="form-control">
+                  <option value="Main Dining" selected>Main Dining</option>
+                  <option value="Patio">Patio</option>
+                  <option value="VIP Room">VIP Room</option>
                 </select>
                 <svg
                   class="select-icon"
@@ -531,10 +542,12 @@
             <label>Status</label>
             <div class="availability-toggle-group">
               <label class="switch-toggle-widget">
-                <input type="checkbox" checked />
+                <input id="tableStatusInput" type="checkbox" checked />
                 <span class="slider-round-object"></span>
               </label>
-              <span class="availability-status-label status-bold"
+              <span
+                id="tableStatusLabel"
+                class="availability-status-label status-bold"
                 >Available</span
               >
             </div>
@@ -542,7 +555,7 @@
 
           <div class="checkbox-group">
             <label class="custom-checkbox-wrapper">
-              <input type="checkbox" checked />
+              <input id="autoQRCodeInput" type="checkbox" checked />
               <span class="custom-checkmark">
                 <svg
                   viewBox="0 0 24 24"
@@ -561,8 +574,12 @@
         </div>
 
         <div class="modal-footer">
-          <button class="btn-cancel" id="cancelTableModalBtn">Cancel</button>
-          <button class="btn-save">Add Table</button>
+          <button class="btn-cancel" id="cancelTableModalBtn" type="button">
+            Cancel
+          </button>
+          <button id="saveTableBtn" class="btn-save" type="button">
+            Add Table
+          </button>
         </div>
       </div>
     </div>
@@ -600,12 +617,135 @@
         const closeTableModal = () => {
           addTableModal.classList.remove("active");
           document.body.style.overflow = "auto";
+          resetTableForm();
         };
 
-        if (closeTableModalBtn)
-          closeTableModalBtn.addEventListener("click", closeTableModal);
-        if (cancelTableModalBtn)
-          cancelTableModalBtn.addEventListener("click", closeTableModal);
+        const setStatusLabel = () => {
+          if (tableStatusInput.checked) {
+            tableStatusLabel.textContent = "Available";
+          } else {
+            tableStatusLabel.textContent = "Occupied";
+          }
+        };
+
+        const resetTableForm = () => {
+          tableNameInput.value = "";
+          tableCapacityInput.value = "";
+          tableAreaInput.value = "Main Dining";
+          tableStatusInput.checked = true;
+          setStatusLabel();
+          autoQRCodeInput.checked = true;
+        };
+
+        const createTableCard = ({ name, status, capacity, area, qrData }) => {
+          const card = document.createElement("div");
+          card.className = "tbl-custom-card";
+          card.innerHTML = `
+            <div class="tbl-card-header">
+              <h3 class="tbl-name">${name}</h3>
+              <span class="tbl-status-badge ${status === "Available" ? "badge-available" : status === "Reserved" ? "badge-reserved" : "badge-occupied"}">${status}</span>
+            </div>
+            <div class="tbl-capacity">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                <circle cx="9" cy="7" r="4"></circle>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+              </svg>
+              <span>Capacity: ${capacity} Seats</span>
+            </div>
+            <div class="tbl-qr-wrapper">
+              <img src="${qrData}" alt="QR Code ${name}" class="qr-image" />
+            </div>
+            <div class="tbl-card-actions">
+              <button class="btn-outline-action" type="button">Download QR</button>
+              <button class="btn-outline-action" type="button">Print QR</button>
+            </div>
+            <div class="tbl-card-footer">
+              <a href="#" class="footer-link link-edit">Edit Table</a>
+              <a href="#" class="footer-link link-delete">Delete</a>
+            </div>
+          `;
+
+          return card;
+        };
+
+        const buildQRCodeUrl = (value) => {
+          const payload = encodeURIComponent(value.trim() || "New Table");
+          return `https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=${payload}`;
+        };
+
+        const tablesGrid = document.getElementById("tablesGrid");
+        const tableNameInput = document.getElementById("tableNameInput");
+        const tableCapacityInput =
+          document.getElementById("tableCapacityInput");
+        const tableAreaInput = document.getElementById("tableAreaInput");
+        const tableStatusInput = document.getElementById("tableStatusInput");
+        const tableStatusLabel = document.getElementById("tableStatusLabel");
+        const autoQRCodeInput = document.getElementById("autoQRCodeInput");
+        const saveTableBtn = document.getElementById("saveTableBtn");
+        const openAddTableBtn = document.getElementById("openAddTableBtn");
+        let tableCount = tablesGrid
+          ? tablesGrid.querySelectorAll(".tbl-custom-card").length
+          : 0;
+
+        if (openAddTableBtn) {
+          openAddTableBtn.addEventListener("click", () => {
+            addTableModal.classList.add("active");
+            document.body.style.overflow = "hidden";
+          });
+        }
+
+        if (tableStatusInput) {
+          tableStatusInput.addEventListener("change", setStatusLabel);
+        }
+
+        if (saveTableBtn) {
+          saveTableBtn.addEventListener("click", () => {
+            const rawName = tableNameInput.value.trim();
+            const capacityValue = parseInt(tableCapacityInput.value, 10);
+            const areaValue = tableAreaInput.value;
+            const statusValue = tableStatusInput.checked
+              ? "Available"
+              : "Occupied";
+            const tableName = rawName || `Table ${tableCount + 1}`;
+
+            if (!capacityValue || capacityValue <= 0) {
+              alert("Please enter a valid seating capacity.");
+              return;
+            }
+
+            const qrData = autoQRCodeInput.checked
+              ? buildQRCodeUrl(`${tableName} - ${areaValue}`)
+              : buildQRCodeUrl(tableName);
+
+            const newCard = createTableCard({
+              name: tableName,
+              status: statusValue,
+              capacity: capacityValue,
+              area: areaValue,
+              qrData,
+            });
+
+            if (tablesGrid) {
+              tablesGrid.appendChild(newCard);
+              tableCount += 1;
+            }
+
+            closeTableModal();
+          });
+        }
+
+        if (tablesGrid) {
+          tablesGrid.addEventListener("click", (event) => {
+            const deleteLink = event.target.closest(".link-delete");
+            if (deleteLink) {
+              event.preventDefault();
+              const card = deleteLink.closest(".tbl-custom-card");
+              if (card) card.remove();
+            }
+          });
+        }
 
         // Menutup modal jika user klik area gelap di luarnya
         window.addEventListener("click", (e) => {
