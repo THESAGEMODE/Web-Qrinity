@@ -576,6 +576,7 @@
       </div>
     </div>
 
+    <script src="js/dashboard-shared.js"></script>
     <script>
       const toggleSidebar = document.getElementById("toggleSidebar");
       const sidebar = document.getElementById("sidebar");

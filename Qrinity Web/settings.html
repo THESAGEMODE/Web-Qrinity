@@ -827,15 +827,8 @@ Jl. Sudirman No. 123, Jakarta Selatan, 12190</textarea
       </div>
     </div>
 
+    <script src="js/dashboard-shared.js"></script>
     <script>
-      const toggleSidebar = document.getElementById("toggleSidebar");
-      const sidebar = document.getElementById("sidebar");
-      if (toggleSidebar && sidebar) {
-        toggleSidebar.addEventListener("click", () => {
-          sidebar.classList.toggle("mobile-open");
-        });
-      }
-
       // Simple logic to toggle "Closed" state on checkboxes
       const dayCheckboxes = document.querySelectorAll(
         '.hours-row input[type="checkbox"]',
