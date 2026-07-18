@@ -52,16 +52,24 @@ function toast(msg) {
 /* ---------- LANDING ---------- */
 if (document.body.classList.contains("landing-page")) {
   const s = getState();
-  document.getElementById("name").value = s.name;
-  document.getElementById("table").value = s.table;
+  document.getElementById("name").value = s.name || "";
+
+  // Auto-detect table number from URL param ?table=05, default to "05"
+  const urlParams = new URLSearchParams(window.location.search);
+  const detectedTable = urlParams.get("table") || s.table || "05";
+  const displayNum = detectedTable.padStart(2, "0");
+
+  // Update table displays
+  const numEl = document.getElementById("table-number-display");
+  const detEl = document.getElementById("table-detected-num");
+  if (numEl) numEl.textContent = displayNum;
+  if (detEl) detEl.textContent = displayNum;
 
   document.getElementById("customer-form").addEventListener("submit", (e) => {
     e.preventDefault();
     const name = document.getElementById("name").value.trim();
-    const table = document.getElementById("table").value.trim();
     if (!name) { alert("Silakan masukkan nama Anda"); return; }
-    if (!table) { alert("Silakan masukkan nomor meja"); return; }
-    setState({ name, table });
+    setState({ name, table: displayNum });
     location.href = "menu.html";
   });
 }
