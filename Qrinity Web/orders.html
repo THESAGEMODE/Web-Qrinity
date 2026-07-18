@@ -326,7 +326,7 @@
 
           <!-- SIX STATS COUNTERS ROW -->
           <div class="orders-stats-container">
-            <div class="order-stat-mini-card active-border">
+            <div class="order-stat-mini-card">
               <div class="mini-stat-icon-wrap icon-purple-bg">
                 <svg
                   viewBox="0 0 24 24"
@@ -511,9 +511,6 @@
               </svg>
               <span>Export</span>
             </button>
-            <button class="btn-primary-purple-add">
-              <span class="plus-math">+</span> New Order
-            </button>
           </div>
 
           <!-- MAIN LAYOUT TWO COLUMNS SPLIT -->
@@ -535,173 +532,192 @@
                       <th>Action</th>
                     </tr>
                   </thead>
-                <tbody id="ordersTableBody">
-                  <tr class="order-table-row" data-order-id="QR-1289">
-                    <td><span class="order-id-txt">#QR-1289</span></td>
-                    <td>
-                      <div class="customer-profile-cell">
-                        <div
-                          class="cust-avatar-frame"
-                          style="
-                            background-image: url(&quot;https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&quot;);
-                          "
-                        ></div>
-                        <div>
-                          <strong class="cust-name-title">Dewi Lestari</strong>
-                          <span class="cust-guests-sub">2 Guests</span>
+                  <tbody id="ordersTableBody">
+                    <tr class="order-table-row" data-order-id="QR-1289">
+                      <td><span class="order-id-txt">#QR-1289</span></td>
+                      <td>
+                        <div class="customer-profile-cell">
+                          <div
+                            class="cust-avatar-frame"
+                            style="
+                              background-image: url(&quot;https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&quot;);
+                            "
+                          ></div>
+                          <div>
+                            <strong class="cust-name-title"
+                              >Dewi Lestari</strong
+                            >
+                            <span class="cust-guests-sub">2 Guests</span>
+                          </div>
                         </div>
-                      </div>
-                    </td>
-                    <td><span class="font-semibold">T5</span></td>
-                    <td>
-                      <div class="ordered-items-summary">
-                        <strong>2 Items</strong>
-                        <small>Beef Steak, Lemon Tea</small>
-                      </div>
-                    </td>
-                    <td><span class="font-bold">Rp 125.000</span></td>
-                    <td>
-                      <span class="status-dot-tag tag-orange-dot">Pending</span>
-                    </td>
-                    <td>
-                      <span class="pay-solid-badge badge-red-bg">Unpaid</span>
-                    </td>
-                    <td class="time-stamp-cell">10:30 AM</td>
-                    <td><button class="table-action-dot-btn">•••</button></td>
-                  </tr>
-                  <tr class="order-table-row" data-order-id="QR-1288">
-                    <td><span class="order-id-txt">#QR-1288</span></td>
-                    <td>
-                      <div class="customer-profile-cell">
-                        <div
-                          class="cust-avatar-frame"
-                          style="
-                            background-image: url(&quot;https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&quot;);
-                          "
-                        ></div>
-                        <div>
-                          <strong class="cust-name-title">Budi Santoso</strong>
-                          <span class="cust-guests-sub">3 Guests</span>
+                      </td>
+                      <td><span class="font-semibold">T5</span></td>
+                      <td>
+                        <div class="ordered-items-summary">
+                          <strong>2 Items</strong>
+                          <small>Beef Steak, Lemon Tea</small>
                         </div>
-                      </div>
-                    </td>
-                    <td><span class="font-semibold">T2</span></td>
-                    <td>
-                      <div class="ordered-items-summary">
-                        <strong>3 Items</strong>
-                        <small>Chicken Wings, Fries, Ice Tea</small>
-                      </div>
-                    </td>
-                    <td><span class="font-bold">Rp 85.000</span></td>
-                    <td>
-                      <span class="status-dot-tag tag-blue-dot">Preparing</span>
-                    </td>
-                    <td>
-                      <span class="pay-solid-badge badge-green-bg">Cash</span>
-                    </td>
-                    <td class="time-stamp-cell">10:28 AM</td>
-                    <td><button class="table-action-dot-btn">•••</button></td>
-                  </tr>
-                  <tr class="order-table-row" data-order-id="QR-1287">
-                    <td>
-                      <div class="customer-profile-cell">
-                        <div
-                          class="cust-avatar-frame"
-                          style="
-                            background-image: url(&quot;https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&quot;);
-                          "
-                        ></div>
-                        <div>
-                          <strong class="cust-name-title">Siti Aisyah</strong>
-                          <span class="cust-guests-sub">4 Guests</span>
+                      </td>
+                      <td><span class="font-bold">Rp 125.000</span></td>
+                      <td>
+                        <span class="status-dot-tag tag-orange-dot"
+                          >Pending</span
+                        >
+                      </td>
+                      <td>
+                        <span class="pay-solid-badge badge-red-bg">Unpaid</span>
+                      </td>
+                      <td class="time-stamp-cell">10:30 AM</td>
+                      <td><button class="table-action-dot-btn">•••</button></td>
+                    </tr>
+                    <tr class="order-table-row" data-order-id="QR-1288">
+                      <td><span class="order-id-txt">#QR-1288</span></td>
+                      <td>
+                        <div class="customer-profile-cell">
+                          <div
+                            class="cust-avatar-frame"
+                            style="
+                              background-image: url(&quot;https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&quot;);
+                            "
+                          ></div>
+                          <div>
+                            <strong class="cust-name-title"
+                              >Budi Santoso</strong
+                            >
+                            <span class="cust-guests-sub">3 Guests</span>
+                          </div>
                         </div>
-                      </div>
-                    </td>
-                    <td><span class="font-semibold">T8</span></td>
-                    <td>
-                      <div class="ordered-items-summary">
-                        <strong>2 Items</strong>
-                        <small>Spaghetti Carbonara, Lemon Tea</small>
-                      </div>
-                    </td>
-                    <td><span class="font-bold">Rp 78.000</span></td>
-                    <td>
-                      <span class="status-dot-tag tag-blue-dot">Preparing</span>
-                    </td>
-                    <td>
-                      <span class="pay-solid-badge badge-indigo-bg">QRIS</span>
-                    </td>
-                    <td class="time-stamp-cell">10:24 AM</td>
-                    <td><button class="table-action-dot-btn">•••</button></td>
-                  </tr>
-                  <tr class="order-table-row" data-order-id="QR-1286">
-                    <td>
-                      <div class="customer-profile-cell">
-                        <div
-                          class="cust-avatar-frame"
-                          style="
-                            background-image: url(&quot;https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&quot;);
-                          "
-                        ></div>
-                        <div>
-                          <strong class="cust-name-title">Andi Wijaya</strong>
-                          <span class="cust-guests-sub">2 Guests</span>
+                      </td>
+                      <td><span class="font-semibold">T2</span></td>
+                      <td>
+                        <div class="ordered-items-summary">
+                          <strong>3 Items</strong>
+                          <small>Chicken Wings, Fries, Ice Tea</small>
                         </div>
-                      </div>
-                    </td>
-                    <td><span class="font-semibold">T1</span></td>
-                    <td>
-                      <div class="ordered-items-summary">
-                        <strong>2 Items</strong>
-                        <small>Beef Steak, Lemon Tea</small>
-                      </div>
-                    </td>
-                    <td><span class="font-bold">Rp 125.000</span></td>
-                    <td>
-                      <span class="status-dot-tag tag-green-dot">Ready</span>
-                    </td>
-                    <td>
-                      <span class="pay-solid-badge badge-slate-bg">Card</span>
-                    </td>
-                    <td class="time-stamp-cell">10:20 AM</td>
-                    <td><button class="table-action-dot-btn">•••</button></td>
-                  </tr>
-                  <tr class="order-table-row" data-order-id="QR-1285">
-                    <td>
-                      <div class="customer-profile-cell">
-                        <div
-                          class="cust-avatar-frame"
-                          style="
-                            background-image: url(&quot;https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&quot;);
-                          "
-                        ></div>
-                        <div>
-                          <strong class="cust-name-title">Rina Marlina</strong>
-                          <span class="cust-guests-sub">2 Guests</span>
+                      </td>
+                      <td><span class="font-bold">Rp 85.000</span></td>
+                      <td>
+                        <span class="status-dot-tag tag-blue-dot"
+                          >Preparing</span
+                        >
+                      </td>
+                      <td>
+                        <span class="pay-solid-badge badge-green-bg">Cash</span>
+                      </td>
+                      <td class="time-stamp-cell">10:28 AM</td>
+                      <td><button class="table-action-dot-btn">•••</button></td>
+                    </tr>
+                    <tr class="order-table-row" data-order-id="QR-1287">
+                      <td><span class="order-id-txt">#QR-1287</span></td>
+                      <td>
+                        <div class="customer-profile-cell">
+                          <div
+                            class="cust-avatar-frame"
+                            style="
+                              background-image: url(&quot;https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&quot;);
+                            "
+                          ></div>
+                          <div>
+                            <strong class="cust-name-title">Siti Aisyah</strong>
+                            <span class="cust-guests-sub">4 Guests</span>
+                          </div>
                         </div>
-                      </div>
-                    </td>
-                    <td><span class="font-semibold">T3</span></td>
-                    <td>
-                      <div class="ordered-items-summary">
-                        <strong>1 Item</strong>
-                        <small>Iced Lemon Tea</small>
-                      </div>
-                    </td>
-                    <td><span class="font-bold">Rp 25.000</span></td>
-                    <td>
-                      <span class="status-dot-tag tag-green-dot"
-                        >Completed</span
-                      >
-                    </td>
-                    <td>
-                      <span class="pay-solid-badge badge-indigo-bg">QRIS</span>
-                    </td>
-                    <td class="time-stamp-cell">10:15 AM</td>
-                    <td><button class="table-action-dot-btn">•••</button></td>
-                  </tr>
-                </tbody>
-              </table>
+                      </td>
+                      <td><span class="font-semibold">T8</span></td>
+                      <td>
+                        <div class="ordered-items-summary">
+                          <strong>2 Items</strong>
+                          <small>Spaghetti Carbonara, Lemon Tea</small>
+                        </div>
+                      </td>
+                      <td><span class="font-bold">Rp 78.000</span></td>
+                      <td>
+                        <span class="status-dot-tag tag-blue-dot"
+                          >Preparing</span
+                        >
+                      </td>
+                      <td>
+                        <span class="pay-solid-badge badge-indigo-bg"
+                          >QRIS</span
+                        >
+                      </td>
+                      <td class="time-stamp-cell">10:24 AM</td>
+                      <td><button class="table-action-dot-btn">•••</button></td>
+                    </tr>
+                    <tr class="order-table-row" data-order-id="QR-1286">
+                      <td><span class="order-id-txt">#QR-1286</span></td>
+                      <td>
+                        <div class="customer-profile-cell">
+                          <div
+                            class="cust-avatar-frame"
+                            style="
+                              background-image: url(&quot;https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&quot;);
+                            "
+                          ></div>
+                          <div>
+                            <strong class="cust-name-title">Andi Wijaya</strong>
+                            <span class="cust-guests-sub">2 Guests</span>
+                          </div>
+                        </div>
+                      </td>
+                      <td><span class="font-semibold">T1</span></td>
+                      <td>
+                        <div class="ordered-items-summary">
+                          <strong>2 Items</strong>
+                          <small>Beef Steak, Lemon Tea</small>
+                        </div>
+                      </td>
+                      <td><span class="font-bold">Rp 125.000</span></td>
+                      <td>
+                        <span class="status-dot-tag tag-green-dot">Ready</span>
+                      </td>
+                      <td>
+                        <span class="pay-solid-badge badge-slate-bg">Card</span>
+                      </td>
+                      <td class="time-stamp-cell">10:20 AM</td>
+                      <td><button class="table-action-dot-btn">•••</button></td>
+                    </tr>
+                    <tr class="order-table-row" data-order-id="QR-1285">
+                      <td><span class="order-id-txt">#QR-1285</span></td>
+                      <td>
+                        <div class="customer-profile-cell">
+                          <div
+                            class="cust-avatar-frame"
+                            style="
+                              background-image: url(&quot;https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&quot;);
+                            "
+                          ></div>
+                          <div>
+                            <strong class="cust-name-title"
+                              >Rina Marlina</strong
+                            >
+                            <span class="cust-guests-sub">2 Guests</span>
+                          </div>
+                        </div>
+                      </td>
+                      <td><span class="font-semibold">T3</span></td>
+                      <td>
+                        <div class="ordered-items-summary">
+                          <strong>1 Item</strong>
+                          <small>Iced Lemon Tea</small>
+                        </div>
+                      </td>
+                      <td><span class="font-bold">Rp 25.000</span></td>
+                      <td>
+                        <span class="status-dot-tag tag-green-dot"
+                          >Completed</span
+                        >
+                      </td>
+                      <td>
+                        <span class="pay-solid-badge badge-indigo-bg"
+                          >QRIS</span
+                        >
+                      </td>
+                      <td class="time-stamp-cell">10:15 AM</td>
+                      <td><button class="table-action-dot-btn">•••</button></td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
 
               <!-- PAGINATION ROW CONTROLS -->

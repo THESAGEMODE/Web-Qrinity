@@ -333,8 +333,8 @@
           <!-- FILTER AND VIEW TOGGLE BAR -->
           <div class="menu-filter-control-bar">
             <div class="filter-left-group">
-              <div class="dropdown-filter-select">
-                <span>All Categories</span>
+              <div class="dropdown-filter-select" id="categoryFilter">
+                <span class="filter-selected-text">All Categories</span>
                 <svg
                   viewBox="0 0 24 24"
                   fill="none"
@@ -343,9 +343,17 @@
                 >
                   <polyline points="6 9 12 15 18 9"></polyline>
                 </svg>
+                <div class="filter-dropdown-list" id="categoryDropdown">
+                  <button class="filter-option-item active-option" data-value="all">All Categories</button>
+                  <button class="filter-option-item" data-value="Main Course">Main Course</button>
+                  <button class="filter-option-item" data-value="Snacks">Snacks</button>
+                  <button class="filter-option-item" data-value="Drinks">Drinks</button>
+                  <button class="filter-option-item" data-value="Desserts">Desserts</button>
+                  <button class="filter-option-item" data-value="Others">Others</button>
+                </div>
               </div>
-              <div class="dropdown-filter-select">
-                <span>All Status</span>
+              <div class="dropdown-filter-select" id="statusFilter">
+                <span class="filter-selected-text">All Status</span>
                 <svg
                   viewBox="0 0 24 24"
                   fill="none"
@@ -354,6 +362,11 @@
                 >
                   <polyline points="6 9 12 15 18 9"></polyline>
                 </svg>
+                <div class="filter-dropdown-list" id="statusDropdown">
+                  <button class="filter-option-item active-option" data-value="all">All Status</button>
+                  <button class="filter-option-item" data-value="available">Available</button>
+                  <button class="filter-option-item" data-value="unavailable">Unavailable</button>
+                </div>
               </div>
               <div class="filter-inner-search-box">
                 <svg
@@ -404,19 +417,19 @@
           </div>
 
           <!-- CATEGORY TABS ROW -->
-          <div class="menu-category-tabs-wrapper">
-            <button class="category-tab-item active-tab">All (32)</button>
-            <button class="category-tab-item">Main Course (12)</button>
-            <button class="category-tab-item">Snacks (6)</button>
-            <button class="category-tab-item">Drinks (8)</button>
-            <button class="category-tab-item">Desserts (4)</button>
-            <button class="category-tab-item">Others (2)</button>
+          <div class="menu-category-tabs-wrapper" id="categoryTabs">
+            <button class="category-tab-item active-tab" data-category="all">All (32)</button>
+            <button class="category-tab-item" data-category="Main Course">Main Course (12)</button>
+            <button class="category-tab-item" data-category="Snacks">Snacks (6)</button>
+            <button class="category-tab-item" data-category="Drinks">Drinks (8)</button>
+            <button class="category-tab-item" data-category="Desserts">Desserts (4)</button>
+            <button class="category-tab-item" data-category="Others">Others (2)</button>
           </div>
 
           <!-- MAIN 5-COLUMN FOOD GRID SYSTEM -->
           <div class="menu-items-responsive-grid">
             <!-- Card 1: Beef Steak -->
-            <div class="menu-food-card">
+            <div class="menu-food-card" data-category="Main Course">
               <div
                 class="food-card-img-wrap"
                 style="
@@ -428,6 +441,7 @@
               <div class="food-card-content-body">
                 <h4 class="food-card-title">Beef Steak</h4>
                 <span class="food-card-category">Main Course</span>
+                <p class="food-card-desc">Premium grilled beef tenderloin with mushroom sauce</p>
                 <div class="food-card-price-txt">Rp 125.000</div>
                 <div class="food-card-footer-controls">
                   <div class="availability-toggle-group">
@@ -470,7 +484,7 @@
             </div>
 
             <!-- Card 2: Chicken Wings -->
-            <div class="menu-food-card">
+            <div class="menu-food-card" data-category="Main Course">
               <div
                 class="food-card-img-wrap"
                 style="
@@ -482,6 +496,7 @@
               <div class="food-card-content-body">
                 <h4 class="food-card-title">Chicken Wings</h4>
                 <span class="food-card-category">Main Course</span>
+                <p class="food-card-desc">Crispy fried wings tossed in spicy buffalo glaze</p>
                 <div class="food-card-price-txt">Rp 85.000</div>
                 <div class="food-card-footer-controls">
                   <div class="availability-toggle-group">
@@ -524,7 +539,7 @@
             </div>
 
             <!-- Card 3: Spaghetti Carbonara -->
-            <div class="menu-food-card">
+            <div class="menu-food-card" data-category="Main Course">
               <div
                 class="food-card-img-wrap"
                 style="
@@ -536,6 +551,7 @@
               <div class="food-card-content-body">
                 <h4 class="food-card-title">Spaghetti Carbonara</h4>
                 <span class="food-card-category">Main Course</span>
+                <p class="food-card-desc">Creamy pasta with smoked bacon and parmesan</p>
                 <div class="food-card-price-txt">Rp 78.000</div>
                 <div class="food-card-footer-controls">
                   <div class="availability-toggle-group">
@@ -578,7 +594,7 @@
             </div>
 
             <!-- Card 4: Iced Lemon Tea -->
-            <div class="menu-food-card">
+            <div class="menu-food-card" data-category="Drinks">
               <div
                 class="food-card-img-wrap"
                 style="
@@ -590,6 +606,7 @@
               <div class="food-card-content-body">
                 <h4 class="food-card-title">Iced Lemon Tea</h4>
                 <span class="food-card-category">Drinks</span>
+                <p class="food-card-desc">Refreshing chilled black tea with fresh lemon slices</p>
                 <div class="food-card-price-txt">Rp 25.000</div>
                 <div class="food-card-footer-controls">
                   <div class="availability-toggle-group">
@@ -632,7 +649,7 @@
             </div>
 
             <!-- Card 5: French Fries -->
-            <div class="menu-food-card">
+            <div class="menu-food-card" data-category="Snacks">
               <div
                 class="food-card-img-wrap"
                 style="
@@ -644,6 +661,7 @@
               <div class="food-card-content-body">
                 <h4 class="food-card-title">French Fries</h4>
                 <span class="food-card-category">Snacks</span>
+                <p class="food-card-desc">Golden crispy fries seasoned with sea salt</p>
                 <div class="food-card-price-txt">Rp 20.000</div>
                 <div class="food-card-footer-controls">
                   <div class="availability-toggle-group">
@@ -686,7 +704,7 @@
             </div>
 
             <!-- Card 6: Cheese Burger -->
-            <div class="menu-food-card">
+            <div class="menu-food-card" data-category="Main Course">
               <div
                 class="food-card-img-wrap"
                 style="
@@ -698,6 +716,7 @@
               <div class="food-card-content-body">
                 <h4 class="food-card-title">Cheese Burger</h4>
                 <span class="food-card-category">Main Course</span>
+                <p class="food-card-desc">Juicy beef patty with melted cheddar and lettuce</p>
                 <div class="food-card-price-txt">Rp 68.000</div>
                 <div class="food-card-footer-controls">
                   <div class="availability-toggle-group">
@@ -740,7 +759,7 @@
             </div>
 
             <!-- Card 7: Mushroom Soup -->
-            <div class="menu-food-card">
+            <div class="menu-food-card" data-category="Main Course">
               <div
                 class="food-card-img-wrap"
                 style="
@@ -752,6 +771,7 @@
               <div class="food-card-content-body">
                 <h4 class="food-card-title">Mushroom Soup</h4>
                 <span class="food-card-category">Main Course</span>
+                <p class="food-card-desc">Velvety cream soup made from wild forest mushrooms</p>
                 <div class="food-card-price-txt">Rp 45.000</div>
                 <div class="food-card-footer-controls">
                   <div class="availability-toggle-group">
@@ -794,7 +814,7 @@
             </div>
 
             <!-- Card 8: Chocolate Cake -->
-            <div class="menu-food-card">
+            <div class="menu-food-card" data-category="Desserts">
               <div
                 class="food-card-img-wrap"
                 style="
@@ -806,6 +826,7 @@
               <div class="food-card-content-body">
                 <h4 class="food-card-title">Chocolate Cake</h4>
                 <span class="food-card-category">Desserts</span>
+                <p class="food-card-desc">Rich dark chocolate layered cake with ganache topping</p>
                 <div class="food-card-price-txt">Rp 38.000</div>
                 <div class="food-card-footer-controls">
                   <div class="availability-toggle-group">
@@ -848,7 +869,7 @@
             </div>
 
             <!-- Card 9: Mojito -->
-            <div class="menu-food-card">
+            <div class="menu-food-card" data-category="Drinks">
               <div
                 class="food-card-img-wrap"
                 style="
@@ -860,6 +881,7 @@
               <div class="food-card-content-body">
                 <h4 class="food-card-title">Mojito</h4>
                 <span class="food-card-category">Drinks</span>
+                <p class="food-card-desc">Classic mint cocktail with lime and sparkling soda</p>
                 <div class="food-card-price-txt">Rp 30.000</div>
                 <div class="food-card-footer-controls">
                   <div class="availability-toggle-group">
@@ -902,7 +924,7 @@
             </div>
 
             <!-- Card 10: Onion Rings -->
-            <div class="menu-food-card">
+            <div class="menu-food-card" data-category="Snacks">
               <div
                 class="food-card-img-wrap"
                 style="
@@ -914,6 +936,7 @@
               <div class="food-card-content-body">
                 <h4 class="food-card-title">Onion Rings</h4>
                 <span class="food-card-category">Snacks</span>
+                <p class="food-card-desc">Battered onion rings fried until golden and crunchy</p>
                 <div class="food-card-price-txt">Rp 22.000</div>
                 <div class="food-card-footer-controls">
                   <div class="availability-toggle-group">

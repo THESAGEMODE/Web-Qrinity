@@ -310,6 +310,247 @@
       </div>`;
 
     panel.querySelector("#closeOrderPanel")?.addEventListener("click", closePanel);
+    panel.querySelector(".btn-update-status-split-dropdown")?.addEventListener("click", () => {
+      renderAcceptedPanel(order);
+    });
+  };
+
+  const renderAcceptedPanel = (order) => {
+    const panel = document.getElementById("orderDetailsPanel");
+    if (!panel || !order) return;
+
+    // Update order data
+    order.status = "Accepted";
+    order.statusClass = "tag-green-dot";
+    order.statusTag = "tag-green-soft-solid";
+    order.serviceFee = Math.round(order.total * 0.05);
+    order.tax = Math.round(order.total * 0.1);
+    const grandTotal = order.total + order.serviceFee + order.tax;
+
+    // Update table row status badge
+    const row = document.querySelector(`tr[data-order-id="${order.id}"]`);
+    if (row) {
+      const badge = row.querySelector(".status-dot-tag");
+      if (badge) {
+        badge.className = "status-dot-tag tag-blue-dot";
+        badge.textContent = "Preparing";
+      }
+    }
+
+    const itemsHtml = order.items
+      .map(
+        (item) => `
+        <div class="food-item-panel-row">
+          <div class="food-img-avatar-box" style="background-image: url('${item.image}')"></div>
+          <div class="food-item-meta-details">
+            <h5>${item.name}</h5>
+            <span class="qty-multiplier">x${item.qty}</span>
+          </div>
+          <span class="item-computed-price">${formatCurrency(item.price * item.qty)}</span>
+        </div>`
+      )
+      .join("");
+
+    panel.innerHTML = `
+      <div class="panel-header-title-row">
+        <h3>Order Details</h3>
+        <button type="button" class="close-panel-btn" id="closeOrderPanel" aria-label="Close panel">✕</button>
+      </div>
+
+      <div class="panel-scroll-body">
+        <div class="order-accepted-success-header">
+          <div class="accepted-check-icon-circle">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+          </div>
+          <div class="accepted-header-text">
+            <h3>Order Accepted</h3>
+            <p>The order has been accepted and sent to kitchen.</p>
+          </div>
+        </div>
+
+        <div class="panel-order-id-block">
+          <div>
+            <h2 class="panel-id-heading">#${order.id}</h2>
+            <div class="panel-meta-grid-specs">
+              <span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                </svg>
+                Table ${order.table}
+              </span>
+              <span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                </svg>
+                ${order.guests} Guests
+              </span>
+              <span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10"></circle>
+                </svg>
+                ${order.time}
+              </span>
+            </div>
+          </div>
+          <span class="tag-green-soft-solid">Accepted</span>
+        </div>
+
+        <div class="panel-section-block">
+          <h4 class="section-mini-heading">Customer</h4>
+          <div class="customer-profile-cell margin-top-md">
+            <div class="cust-avatar-frame large-avatar" style="background-image: url('${order.avatar}')"></div>
+            <div>
+              <strong class="cust-name-title font-14">${order.customer}</strong>
+              <span class="cust-guests-sub">${order.phone}</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel-section-block">
+          <h4 class="section-mini-heading">Order Items (${order.itemCount})</h4>
+          <div class="food-items-panel-stack">${itemsHtml}</div>
+        </div>
+
+        <div class="panel-financial-pricing-summary">
+          <div class="pricing-summary-line">
+            <span>Subtotal</span>
+            <span>${formatCurrency(order.total)}</span>
+          </div>
+          <div class="pricing-summary-line">
+            <span>Service Fee (5%)</span>
+            <span>${formatCurrency(order.serviceFee)}</span>
+          </div>
+          <div class="pricing-summary-line tax-line">
+            <span>Tax (10%)</span>
+            <span>${formatCurrency(order.tax)}</span>
+          </div>
+          <div class="pricing-summary-line grand-total-style-row">
+            <strong>Total</strong>
+            <strong class="purple-color-txt">${formatCurrency(grandTotal)}</strong>
+          </div>
+        </div>
+
+        <div class="panel-section-block no-border-bottom">
+          <h4 class="section-mini-heading">Payment Information</h4>
+          <div class="info-list-rows-stack">
+            <div class="info-data-row">
+              <span class="label-muted">Method</span>
+              <span class="value-dark-bold ${order.paymentMethodClass}">${order.paymentMethod}</span>
+            </div>
+            <div class="info-data-row">
+              <span class="label-muted">Status</span>
+              <span class="value-dark-bold ${order.paymentStatusClass}">${order.paymentStatus}</span>
+            </div>
+            <div class="info-data-row">
+              <span class="label-muted">Order Type</span>
+              <span class="value-dark-bold">${order.orderType}</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="kitchen-notification-banner">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="12" y1="16" x2="12" y2="12"></line>
+            <line x1="12" y1="8" x2="12.01" y2="8"></line>
+          </svg>
+          <p>This order has been sent to kitchen. You can monitor the progress in real-time.</p>
+        </div>
+      </div>
+
+      <div class="panel-action-footer-buttons-grid">
+        <button type="button" class="btn-print-order">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="6 9 6 2 18 2 18 9"></polyline>
+            <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+            <rect x="6" y="14" width="12" height="8"></rect>
+          </svg>
+          Print Order
+        </button>
+        <div class="more-actions-wrapper">
+          <button type="button" class="btn-more-actions-split" id="moreActionsToggle">
+            <span>More Actions</span>
+            <span class="dropdown-arrow-divider-icon">▼</span>
+          </button>
+          <div class="more-actions-dropdown" id="moreActionsDropdown">
+            <button class="dropdown-action-item" data-action="view-details">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                <polyline points="14 2 14 8 21 8"></polyline>
+                <line x1="16" y1="13" x2="8" y2="13"></line>
+                <line x1="16" y1="17" x2="8" y2="17"></line>
+              </svg>
+              View Full Details
+            </button>
+            <button class="dropdown-action-item" data-action="print-receipt">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="6 9 6 2 18 2 18 9"></polyline>
+                <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+                <rect x="6" y="14" width="12" height="8"></rect>
+              </svg>
+              Print Receipt
+            </button>
+            <button class="dropdown-action-item" data-action="add-note">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 20h9"></path>
+                <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
+              </svg>
+              Add Internal Note
+            </button>
+            <button class="dropdown-action-item" data-action="mark-ready">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 16 14"></polyline>
+              </svg>
+              Mark as Ready
+            </button>
+            <button class="dropdown-action-item" data-action="mark-completed">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+              </svg>
+              Mark as Completed
+            </button>
+            <div class="dropdown-divider-line"></div>
+            <button class="dropdown-action-item danger-action" data-action="cancel-order">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="15" y1="9" x2="9" y2="15"></line>
+                <line x1="9" y1="9" x2="15" y2="15"></line>
+              </svg>
+              Cancel Order
+            </button>
+          </div>
+        </div>
+      </div>`;
+
+    panel.querySelector("#closeOrderPanel")?.addEventListener("click", closePanel);
+
+    // Toggle More Actions dropdown
+    const toggle = panel.querySelector("#moreActionsToggle");
+    const dropdown = panel.querySelector("#moreActionsDropdown");
+    toggle?.addEventListener("click", (e) => {
+      e.stopPropagation();
+      dropdown?.classList.toggle("is-open");
+    });
+
+    // Close dropdown on outside click
+    document.addEventListener("click", (e) => {
+      if (!e.target.closest(".more-actions-wrapper")) {
+        dropdown?.classList.remove("is-open");
+      }
+    });
+
+    // Handle dropdown action clicks
+    dropdown?.querySelectorAll(".dropdown-action-item").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const action = btn.dataset.action;
+        dropdown.classList.remove("is-open");
+        console.log(`[More Actions] → ${action} for order #${order.id}`);
+      });
+    });
   };
 
   const openPanel = (orderId) => {
