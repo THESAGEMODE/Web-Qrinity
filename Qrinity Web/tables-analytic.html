@@ -17,22 +17,46 @@
     <div class="db-container">
       <aside class="db-sidebar" id="sidebar">
         <div class="db-sidebar-brand">
-          <svg
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2.5"
-            class="db-brand-icon"
+          <button
+            type="button"
+            class="db-brand-logo"
+            id="sidebarBrandToggle"
+            aria-label="Qrinity"
           >
-            <rect x="3" y="3" width="7" height="7"></rect>
-            <rect x="14" y="3" width="7" height="7"></rect>
-            <rect x="3" y="14" width="7" height="7"></rect>
-            <path d="M14 14h3v3h-3zM20 14v3M14 20h7"></path>
-          </svg>
-          <div>
-            <span class="db-brand-name">Qrinty</span>
-            <small class="db-brand-sub">Restaurant Admin</small>
-          </div>
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.5"
+              class="db-brand-icon"
+            >
+              <rect x="3" y="3" width="7" height="7"></rect>
+              <rect x="14" y="3" width="7" height="7"></rect>
+              <rect x="3" y="14" width="7" height="7"></rect>
+              <path d="M14 14h3v3h-3zM20 14v3M14 20h7"></path>
+            </svg>
+            <div class="db-brand-text">
+              <span class="db-brand-name">Qrinty</span>
+              <small class="db-brand-sub">Restaurant Admin</small>
+            </div>
+          </button>
+          <button
+            type="button"
+            class="sidebar-close-btn"
+            id="closeSidebar"
+            aria-label="Tutup sidebar"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+              <line x1="9" y1="3" x2="9" y2="21"></line>
+              <polyline points="13 8 17 12 13 16"></polyline>
+            </svg>
+          </button>
         </div>
 
         <nav class="db-sidebar-nav">
@@ -252,423 +276,209 @@
           </div>
         </header>
 
-        <div class="db-body-content">
-          <div class="ta-header-row">
-            <div>
-              <h1>Tables Analytic</h1>
-              <p class="sub-heading">
-                Track table usage, occupancy, and revenue performance.
-              </p>
-            </div>
-            <div class="ta-filter-group">
-              <span class="filter-label">Filter By Date:</span>
-              <div class="custom-select-wrapper">
-                <select class="date-dropdown">
-                  <option value="today">Today</option>
-                  <option value="this_week" selected>This Week</option>
-                  <option value="this_month">This Month</option>
-                  <option value="custom">Custom Range</option>
-                </select>
-                <svg
-                  class="select-chevron"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                >
-                  <polyline points="6 9 12 15 18 9"></polyline>
-                </svg>
+        <div class="db-body-content ta-page">
+          <div class="ta-layout" id="taLayout">
+            <div class="ta-page-header">
+              <div>
+                <h1>Table Analytics</h1>
+                <p>Monitor performance of all tables in real-time.</p>
               </div>
-            </div>
-          </div>
-
-          <div class="ta-stats-grid">
-            <div class="ta-stat-card">
-              <div class="stat-icon bg-purple-light">
-                <svg
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                >
-                  <line x1="12" y1="1" x2="12" y2="23"></line>
-                  <path
-                    d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"
-                  ></path>
-                </svg>
-              </div>
-              <div class="stat-info">
-                <h3>Total Revenue (Tables)</h3>
-                <div class="stat-value">Rp 24.500.000</div>
-                <div class="stat-trend trend-up">
-                  <svg
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                  >
-                    <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
-                    <polyline points="17 6 23 6 23 12"></polyline>
+              <div class="ta-page-actions">
+                <div class="ta-date-picker">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                    <line x1="16" y1="2" x2="16" y2="6"></line>
+                    <line x1="8" y1="2" x2="8" y2="6"></line>
+                    <line x1="3" y1="10" x2="21" y2="10"></line>
                   </svg>
-                  <span>+12.5%</span> <small>vs last week</small>
+                  <span>May 20, 2024</span>
                 </div>
-              </div>
-            </div>
-
-            <div class="ta-stat-card">
-              <div class="stat-icon bg-blue-light">
-                <svg
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                >
-                  <circle cx="9" cy="21" r="1"></circle>
-                  <circle cx="20" cy="21" r="1"></circle>
-                  <path
-                    d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"
-                  ></path>
-                </svg>
-              </div>
-              <div class="stat-info">
-                <h3>Average Order Value</h3>
-                <div class="stat-value">Rp 125.000</div>
-                <div class="stat-trend trend-up">
-                  <svg
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                  >
-                    <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
-                    <polyline points="17 6 23 6 23 12"></polyline>
+                <button type="button" class="ta-export-btn">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="7 10 12 15 17 10"></polyline>
+                    <line x1="12" y1="15" x2="12" y2="3"></line>
                   </svg>
-                  <span>+4.2%</span> <small>vs last week</small>
-                </div>
-              </div>
-            </div>
-
-            <div class="ta-stat-card">
-              <div class="stat-icon bg-orange-light">
-                <svg
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                >
-                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                  <circle cx="9" cy="7" r="4"></circle>
-                  <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-                  <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-                </svg>
-              </div>
-              <div class="stat-info">
-                <h3>Total Table Orders</h3>
-                <div class="stat-value">384</div>
-                <div class="stat-trend trend-down">
-                  <svg
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                  >
-                    <polyline points="23 18 13.5 8.5 8.5 13.5 1 6"></polyline>
-                    <polyline points="17 18 23 18 23 12"></polyline>
-                  </svg>
-                  <span>-2.1%</span> <small>vs last week</small>
-                </div>
-              </div>
-            </div>
-
-            <div class="ta-stat-card">
-              <div class="stat-icon bg-teal-light">
-                <svg
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                >
-                  <circle cx="12" cy="12" r="10"></circle>
-                  <polyline points="12 6 12 12 16 14"></polyline>
-                </svg>
-              </div>
-              <div class="stat-info">
-                <h3>Avg. Seating Time</h3>
-                <div class="stat-value">45 Min</div>
-                <div class="stat-trend trend-neutral">
-                  <svg
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                  >
-                    <line x1="5" y1="12" x2="19" y2="12"></line>
-                  </svg>
-                  <span>0%</span> <small>vs last week</small>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="ta-charts-row">
-            <div class="ta-chart-card">
-              <div class="chart-header">
-                <h3>Daily Table Usage</h3>
-                <button class="btn-icon-more">
-                  <svg
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                  >
-                    <circle cx="12" cy="12" r="1"></circle>
-                    <circle cx="19" cy="12" r="1"></circle>
-                    <circle cx="5" cy="12" r="1"></circle>
-                  </svg>
+                  Export
                 </button>
               </div>
-              <div class="chart-body placeholder-chart bar-chart">
-                <div class="bar" style="height: 40%"><span>Mon</span></div>
-                <div class="bar" style="height: 60%"><span>Tue</span></div>
-                <div class="bar" style="height: 55%"><span>Wed</span></div>
-                <div class="bar" style="height: 80%"><span>Thu</span></div>
-                <div
-                  class="bar"
-                  style="height: 100%; background-color: #5c33e3"
-                >
-                  <span>Fri</span>
+            </div>
+
+            <div class="ta-kpi-grid">
+                <div class="ta-kpi-card">
+                  <div class="ta-kpi-icon purple">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                      <line x1="9" y1="3" x2="9" y2="21"></line>
+                    </svg>
+                  </div>
+                  <div>
+                    <span class="ta-kpi-label">Active Tables</span>
+                    <strong class="ta-kpi-value">18</strong>
+                    <small class="ta-kpi-sub neutral">60% of total tables</small>
+                  </div>
                 </div>
-                <div class="bar" style="height: 90%"><span>Sat</span></div>
-                <div class="bar" style="height: 70%"><span>Sun</span></div>
-              </div>
-            </div>
-
-            <div class="ta-chart-card">
-              <div class="chart-header">
-                <h3>Peak Hours (Occupancy)</h3>
-                <button class="btn-icon-more">
-                  <svg
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                  >
-                    <circle cx="12" cy="12" r="1"></circle>
-                    <circle cx="19" cy="12" r="1"></circle>
-                    <circle cx="5" cy="12" r="1"></circle>
-                  </svg>
-                </button>
-              </div>
-              <div class="chart-body placeholder-chart area-chart">
-                <svg viewBox="0 0 100 40" class="line-svg">
-                  <path
-                    d="M0 35 Q 10 30, 20 32 T 40 25 T 60 10 T 80 15 T 100 5"
-                    fill="none"
-                    stroke="#5c33e3"
-                    stroke-width="2"
-                  />
-                  <path
-                    d="M0 40 L 0 35 Q 10 30, 20 32 T 40 25 T 60 10 T 80 15 T 100 5 L 100 40 Z"
-                    fill="rgba(92,51,227,0.1)"
-                    stroke="none"
-                  />
-                </svg>
-                <div class="x-axis-labels">
-                  <span>10:00</span>
-                  <span>13:00</span>
-                  <span>16:00</span>
-                  <span>19:00</span>
-                  <span>22:00</span>
+                <div class="ta-kpi-card">
+                  <div class="ta-kpi-icon green">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                      <circle cx="9" cy="7" r="4"></circle>
+                      <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                      <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                    </svg>
+                  </div>
+                  <div>
+                    <span class="ta-kpi-label">Guests Today</span>
+                    <strong class="ta-kpi-value">124</strong>
+                    <small class="ta-kpi-sub up">↑ 18.5% from yesterday</small>
+                  </div>
+                </div>
+                <div class="ta-kpi-card">
+                  <div class="ta-kpi-icon orange">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <rect x="2" y="5" width="20" height="14" rx="2"></rect>
+                      <line x1="2" y1="10" x2="22" y2="10"></line>
+                    </svg>
+                  </div>
+                  <div>
+                    <span class="ta-kpi-label">Today's Revenue</span>
+                    <strong class="ta-kpi-value">Rp 8.450.000</strong>
+                    <small class="ta-kpi-sub up">↑ 15.2% from yesterday</small>
+                  </div>
+                </div>
+                <div class="ta-kpi-card">
+                  <div class="ta-kpi-icon blue">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                      <polyline points="14 2 14 8 21 8"></polyline>
+                    </svg>
+                  </div>
+                  <div>
+                    <span class="ta-kpi-label">Paid Orders</span>
+                    <strong class="ta-kpi-value">96</strong>
+                    <small class="ta-kpi-sub up">↑ 12.3% from yesterday</small>
+                  </div>
                 </div>
               </div>
-            </div>
-          </div>
 
-          <div class="ta-details-section">
-            <div class="section-header">
-              <h2>Table Performance Details</h2>
-              <button class="btn-secondary-outline">Export CSV</button>
-            </div>
+            <div class="ta-body-split">
+              <div class="ta-body-main">
+                <div class="ta-table-section">
+                <div class="ta-filter-bar">
+                  <div class="ta-filter-selects">
+                    <select id="taFilterArea">
+                      <option value="all">All Areas</option>
+                      <option value="indoor">Indoor</option>
+                      <option value="outdoor">Outdoor</option>
+                      <option value="vip">VIP Room</option>
+                    </select>
+                    <select id="taFilterStatus">
+                      <option value="all">All Status</option>
+                      <option value="preparing">Preparing</option>
+                      <option value="ready">Ready</option>
+                      <option value="served">Served</option>
+                      <option value="available">Available</option>
+                    </select>
+                    <select id="taFilterPayment">
+                      <option value="all">All Payment Methods</option>
+                      <option value="qris">QRIS</option>
+                      <option value="card">Card</option>
+                    </select>
+                  </div>
+                  <div class="ta-filter-search">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <circle cx="11" cy="11" r="8"></circle>
+                      <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                    <input type="text" id="taTableSearch" placeholder="Search table number..." />
+                  </div>
+                  <button type="button" class="ta-reset-btn" id="taResetFilters">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <polyline points="23 4 23 10 17 10"></polyline>
+                      <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path>
+                    </svg>
+                    Reset
+                  </button>
+                </div>
 
-            <div class="data-table-wrapper">
-              <table class="analytics-table">
-                <thead>
-                  <tr>
-                    <th>Table Name</th>
-                    <th>Total Orders</th>
-                    <th>Total Revenue</th>
-                    <th>Occupancy Rate</th>
-                    <th>Avg. Seating Time</th>
-                    <th>Current Status</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>
-                      <div class="table-name-cell">
-                        <span class="tbl-icon">
-                          <svg
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            stroke-width="2"
-                          >
-                            <rect
-                              x="3"
-                              y="3"
-                              width="18"
-                              height="18"
-                              rx="2"
-                              ry="2"
-                            ></rect>
-                            <line x1="9" y1="3" x2="9" y2="21"></line>
-                          </svg>
-                        </span>
-                        <strong>Table 01</strong>
-                      </div>
-                    </td>
-                    <td>42</td>
-                    <td class="text-purple fw-semibold">Rp 2.850.000</td>
-                    <td>
-                      <div class="progress-bar-container">
-                        <div class="progress-fill" style="width: 85%"></div>
-                        <span>85%</span>
-                      </div>
-                    </td>
-                    <td>42 Min</td>
-                    <td>
-                      <span class="status-badge badge-occupied">Occupied</span>
-                    </td>
-                  </tr>
+                <div class="ta-table-wrap">
+                  <table class="ta-data-table">
+                    <thead>
+                      <tr>
+                        <th>Table</th>
+                        <th>Guests</th>
+                        <th>Items</th>
+                        <th>Total Bill</th>
+                        <th>Payment</th>
+                        <th>Order Status</th>
+                        <th>Order Time</th>
+                        <th>Action</th>
+                      </tr>
+                    </thead>
+                    <tbody id="taTableBody"></tbody>
+                  </table>
+                </div>
+              </div>
 
-                  <tr>
-                    <td>
-                      <div class="table-name-cell">
-                        <span class="tbl-icon">
-                          <svg
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            stroke-width="2"
-                          >
-                            <rect
-                              x="3"
-                              y="3"
-                              width="18"
-                              height="18"
-                              rx="2"
-                              ry="2"
-                            ></rect>
-                            <line x1="9" y1="3" x2="9" y2="21"></line>
-                          </svg>
-                        </span>
-                        <strong>Table 02</strong>
-                      </div>
-                    </td>
-                    <td>28</td>
-                    <td class="text-purple fw-semibold">Rp 1.450.000</td>
-                    <td>
-                      <div class="progress-bar-container">
-                        <div
-                          class="progress-fill bg-orange"
-                          style="width: 60%"
-                        ></div>
-                        <span>60%</span>
-                      </div>
-                    </td>
-                    <td>35 Min</td>
-                    <td>
-                      <span class="status-badge badge-available"
-                        >Available</span
-                      >
-                    </td>
-                  </tr>
+              <div class="ta-widgets-grid">
+                <div class="ta-widget-card">
+                  <h3>Revenue by Table</h3>
+                  <div class="ta-revenue-chart" id="taRevenueChart"></div>
+                </div>
 
-                  <tr>
-                    <td>
-                      <div class="table-name-cell">
-                        <span class="tbl-icon">
-                          <svg
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            stroke-width="2"
-                          >
-                            <rect
-                              x="3"
-                              y="3"
-                              width="18"
-                              height="18"
-                              rx="2"
-                              ry="2"
-                            ></rect>
-                            <line x1="9" y1="3" x2="9" y2="21"></line>
-                          </svg>
-                        </span>
-                        <strong>Table 03</strong>
+                <div class="ta-widget-card">
+                  <h3>Table Occupancy</h3>
+                  <div class="ta-donut-wrap">
+                    <div class="ta-donut-chart">
+                      <svg viewBox="0 0 120 120">
+                        <circle cx="60" cy="60" r="46" fill="none" stroke="#ede9fe" stroke-width="14"></circle>
+                        <circle cx="60" cy="60" r="46" fill="none" stroke="#5c33e3" stroke-width="14"
+                          stroke-dasharray="173 289" stroke-linecap="round" transform="rotate(-90 60 60)"></circle>
+                      </svg>
+                      <div class="ta-donut-center">
+                        <strong>60%</strong>
+                        <span>Occupied</span>
                       </div>
-                    </td>
-                    <td>35</td>
-                    <td class="text-purple fw-semibold">Rp 3.100.000</td>
-                    <td>
-                      <div class="progress-bar-container">
-                        <div
-                          class="progress-fill bg-teal"
-                          style="width: 92%"
-                        ></div>
-                        <span>92%</span>
-                      </div>
-                    </td>
-                    <td>55 Min</td>
-                    <td>
-                      <span class="status-badge badge-reserved">Reserved</span>
-                    </td>
-                  </tr>
+                    </div>
+                    <ul class="ta-donut-legend">
+                      <li><span class="dot purple"></span> Occupied <strong>18 (60%)</strong></li>
+                      <li><span class="dot gray"></span> Available <strong>12 (40%)</strong></li>
+                      <li class="total">Total Tables: <strong>30</strong></li>
+                    </ul>
+                  </div>
+                </div>
 
-                  <tr>
-                    <td>
-                      <div class="table-name-cell">
-                        <span class="tbl-icon">
-                          <svg
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            stroke-width="2"
-                          >
-                            <rect
-                              x="3"
-                              y="3"
-                              width="18"
-                              height="18"
-                              rx="2"
-                              ry="2"
-                            ></rect>
-                            <line x1="9" y1="3" x2="9" y2="21"></line>
-                          </svg>
-                        </span>
-                        <strong>VIP Room 1</strong>
-                      </div>
-                    </td>
-                    <td>15</td>
-                    <td class="text-purple fw-semibold">Rp 8.500.000</td>
-                    <td>
-                      <div class="progress-bar-container">
-                        <div
-                          class="progress-fill bg-purple-dark"
-                          style="width: 45%"
-                        ></div>
-                        <span>45%</span>
-                      </div>
-                    </td>
-                    <td>120 Min</td>
-                    <td>
-                      <span class="status-badge badge-available"
-                        >Available</span
-                      >
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
+                <div class="ta-widget-card">
+                  <h3>Peak Dining Hours</h3>
+                  <div class="ta-line-chart">
+                    <svg viewBox="0 0 320 120" preserveAspectRatio="none">
+                      <defs>
+                        <linearGradient id="taLineFill" x1="0" y1="0" x2="0" y2="1">
+                          <stop offset="0%" stop-color="rgba(92,51,227,0.18)"></stop>
+                          <stop offset="100%" stop-color="rgba(92,51,227,0)"></stop>
+                        </linearGradient>
+                      </defs>
+                      <path d="M0 95 L40 88 80 72 120 58 160 42 200 28 240 35 280 48 320 40 L320 120 L0 120 Z" fill="url(#taLineFill)"></path>
+                      <path d="M0 95 L40 88 80 72 120 58 160 42 200 28 240 35 280 48 320 40" fill="none" stroke="#5c33e3" stroke-width="2.5"></path>
+                      <circle cx="200" cy="28" r="4" fill="#5c33e3"></circle>
+                    </svg>
+                    <div class="ta-peak-tooltip">19:00 - 20:00: 85 Orders</div>
+                    <div class="ta-line-labels">
+                      <span>08:00</span><span>12:00</span><span>16:00</span><span>20:00</span><span>22:00</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="ta-widget-card">
+                  <h3>Most Visited Tables</h3>
+                  <ul class="ta-most-visited" id="taMostVisitedList"></ul>
+                </div>
+              </div>
+
+              <footer class="ta-footer">© 2024 Qrinity. All rights reserved.</footer>
+              </div>
+
+              <aside class="ta-detail-panel" id="taDetailPanel" aria-hidden="true"></aside>
             </div>
           </div>
         </div>
@@ -676,5 +486,6 @@
     </div>
 
     <script src="js/dashboard-shared.js"></script>
+    <script src="js/tables-analytic.js"></script>
   </body>
 </html>

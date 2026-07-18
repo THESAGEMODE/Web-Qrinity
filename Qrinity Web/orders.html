@@ -18,22 +18,46 @@
       <!-- ================= SIDEBAR (CONNECTED) ================= -->
       <aside class="db-sidebar" id="sidebar">
         <div class="db-sidebar-brand">
-          <svg
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2.5"
-            class="db-brand-icon"
+          <button
+            type="button"
+            class="db-brand-logo"
+            id="sidebarBrandToggle"
+            aria-label="Qrinity"
           >
-            <rect x="3" y="3" width="7" height="7"></rect>
-            <rect x="14" y="3" width="7" height="7"></rect>
-            <rect x="3" y="14" width="7" height="7"></rect>
-            <path d="M14 14h3v3h-3zM20 14v3M14 20h7"></path>
-          </svg>
-          <div>
-            <span class="db-brand-name">Qrinty</span>
-            <small class="db-brand-sub">Restaurant Admin</small>
-          </div>
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.5"
+              class="db-brand-icon"
+            >
+              <rect x="3" y="3" width="7" height="7"></rect>
+              <rect x="14" y="3" width="7" height="7"></rect>
+              <rect x="3" y="14" width="7" height="7"></rect>
+              <path d="M14 14h3v3h-3zM20 14v3M14 20h7"></path>
+            </svg>
+            <div class="db-brand-text">
+              <span class="db-brand-name">Qrinty</span>
+              <small class="db-brand-sub">Restaurant Admin</small>
+            </div>
+          </button>
+          <button
+            type="button"
+            class="sidebar-close-btn"
+            id="closeSidebar"
+            aria-label="Tutup sidebar"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+              <line x1="9" y1="3" x2="9" y2="21"></line>
+              <polyline points="13 8 17 12 13 16"></polyline>
+            </svg>
+          </button>
         </div>
 
         <nav class="db-sidebar-nav">
@@ -493,25 +517,26 @@
           </div>
 
           <!-- MAIN LAYOUT TWO COLUMNS SPLIT -->
-          <div class="orders-split-grid-view">
+          <div class="orders-split-grid-view" id="ordersLayout">
             <!-- LEFT SIDE: ORDERS LIST TABLE -->
             <div class="orders-table-card-wrapper">
-              <table class="orders-main-data-table">
-                <thead>
-                  <tr>
-                    <th>Order ID</th>
-                    <th>Customer</th>
-                    <th>Table</th>
-                    <th>Items</th>
-                    <th>Total</th>
-                    <th>Status</th>
-                    <th>Payment</th>
-                    <th>Time</th>
-                    <th>Action</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr class="selected-row-highlight">
+              <div class="table-responsive-scroll">
+                <table class="orders-main-data-table">
+                  <thead>
+                    <tr>
+                      <th>Order ID</th>
+                      <th>Customer</th>
+                      <th class="col-table-num">Table</th>
+                      <th class="col-items-detail">Items</th>
+                      <th>Total</th>
+                      <th>Status</th>
+                      <th class="col-payment-info">Payment</th>
+                      <th class="col-time-stamp">Time</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                <tbody id="ordersTableBody">
+                  <tr class="order-table-row" data-order-id="QR-1289">
                     <td><span class="order-id-txt">#QR-1289</span></td>
                     <td>
                       <div class="customer-profile-cell">
@@ -544,7 +569,7 @@
                     <td class="time-stamp-cell">10:30 AM</td>
                     <td><button class="table-action-dot-btn">•••</button></td>
                   </tr>
-                  <tr>
+                  <tr class="order-table-row" data-order-id="QR-1288">
                     <td><span class="order-id-txt">#QR-1288</span></td>
                     <td>
                       <div class="customer-profile-cell">
@@ -577,8 +602,7 @@
                     <td class="time-stamp-cell">10:28 AM</td>
                     <td><button class="table-action-dot-btn">•••</button></td>
                   </tr>
-                  <tr>
-                    <td><span class="order-id-txt">#QR-1287</span></td>
+                  <tr class="order-table-row" data-order-id="QR-1287">
                     <td>
                       <div class="customer-profile-cell">
                         <div
@@ -610,8 +634,7 @@
                     <td class="time-stamp-cell">10:24 AM</td>
                     <td><button class="table-action-dot-btn">•••</button></td>
                   </tr>
-                  <tr>
-                    <td><span class="order-id-txt">#QR-1286</span></td>
+                  <tr class="order-table-row" data-order-id="QR-1286">
                     <td>
                       <div class="customer-profile-cell">
                         <div
@@ -643,8 +666,7 @@
                     <td class="time-stamp-cell">10:20 AM</td>
                     <td><button class="table-action-dot-btn">•••</button></td>
                   </tr>
-                  <tr>
-                    <td><span class="order-id-txt">#QR-1285</span></td>
+                  <tr class="order-table-row" data-order-id="QR-1285">
                     <td>
                       <div class="customer-profile-cell">
                         <div
@@ -680,6 +702,7 @@
                   </tr>
                 </tbody>
               </table>
+              </div>
 
               <!-- PAGINATION ROW CONTROLS -->
               <div class="table-pagination-footer-bar">
@@ -701,166 +724,16 @@
             </div>
 
             <!-- RIGHT SIDE: ORDER DETAILS SIDE PANEL -->
-            <aside class="order-details-sticky-panel">
-              <div class="panel-header-title-row">
-                <h3>Order Details</h3>
-                <button class="close-panel-btn">✕</button>
-              </div>
-
-              <!-- ORDER IDENTIFIER CARD -->
-              <div class="panel-order-id-block">
-                <div>
-                  <h2 class="panel-id-heading">#QR-1289</h2>
-                  <div class="panel-meta-grid-specs">
-                    <span
-                      ><svg
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="2"
-                      >
-                        <rect
-                          x="3"
-                          y="3"
-                          width="18"
-                          height="18"
-                          rx="2"
-                          ry="2"
-                        ></rect>
-                      </svg>
-                      Table T5</span
-                    >
-                    <span
-                      ><svg
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="2"
-                      >
-                        <path
-                          d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"
-                        ></path>
-                      </svg>
-                      2 Guests</span
-                    >
-                    <span
-                      ><svg
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="2"
-                      >
-                        <circle cx="12" cy="12" r="10"></circle>
-                      </svg>
-                      10:30 AM</span
-                    >
-                  </div>
-                </div>
-                <span class="tag-orange-soft-solid">Pending</span>
-              </div>
-
-              <!-- CUSTOMER PROFILE DETAIL BLOCK -->
-              <div class="panel-section-block">
-                <h4 class="section-mini-heading">Customer</h4>
-                <div class="customer-profile-cell margin-top-md">
-                  <div
-                    class="cust-avatar-frame large-avatar"
-                    style="
-                      background-image: url(&quot;https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&quot;);
-                    "
-                  ></div>
-                  <div>
-                    <strong class="cust-name-title font-14"
-                      >Dewi Lestari</strong
-                    >
-                    <span class="cust-guests-sub">+62 812-3456-7890</span>
-                  </div>
-                </div>
-              </div>
-
-              <!-- MENU ITEMS COUNT STACK -->
-              <div class="panel-section-block">
-                <h4 class="section-mini-heading">Order Items (2)</h4>
-                <div class="food-items-panel-stack">
-                  <div class="food-item-panel-row">
-                    <div
-                      class="food-img-avatar-box"
-                      style="
-                        background-image: url(&quot;https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=100&quot;);
-                      "
-                    ></div>
-                    <div class="food-item-meta-details">
-                      <h5>Beef Steak</h5>
-                      <span class="qty-multiplier">x1</span>
-                    </div>
-                    <span class="item-computed-price">Rp 105.000</span>
-                  </div>
-                  <div class="food-item-panel-row">
-                    <div
-                      class="food-img-avatar-box"
-                      style="
-                        background-image: url(&quot;https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?w=100&quot;);
-                      "
-                    ></div>
-                    <div class="food-item-meta-details">
-                      <h5>Lemon Tea</h5>
-                      <span class="qty-multiplier">x1</span>
-                    </div>
-                    <span class="item-computed-price">Rp 20.000</span>
-                  </div>
-                </div>
-              </div>
-
-              <!-- FINANCIAL BILL OVERVIEW -->
-              <div class="panel-financial-pricing-summary">
-                <div class="pricing-summary-line">
-                  <span>Subtotal</span>
-                  <span>Rp 125.000</span>
-                </div>
-                <div class="pricing-summary-line">
-                  <span>Service Fee</span>
-                  <span>Rp 0</span>
-                </div>
-                <div class="pricing-summary-line grand-total-style-row">
-                  <strong>Total</strong>
-                  <strong class="purple-color-txt">Rp 125.000</strong>
-                </div>
-              </div>
-
-              <!-- PAYMENT INFORMATION STACK -->
-              <div class="panel-section-block no-border-bottom">
-                <h4 class="section-mini-heading">Payment Information</h4>
-                <div class="info-list-rows-stack">
-                  <div class="info-data-row">
-                    <span class="label-muted">Method</span>
-                    <span class="value-dark-bold red-alert-txt">Unpaid</span>
-                  </div>
-                  <div class="info-data-row">
-                    <span class="label-muted">Status</span>
-                    <span class="value-dark-bold orange-alert-txt"
-                      >Pending Payment</span
-                    >
-                  </div>
-                  <div class="info-data-row">
-                    <span class="label-muted">Order Type</span>
-                    <span class="value-dark-bold">Dine In</span>
-                  </div>
-                </div>
-              </div>
-
-              <!-- ACTION FOOTER BUTTONS PANEL -->
-              <div class="panel-action-footer-buttons-grid">
-                <button class="btn-cancel-order-action">Cancel Order</button>
-                <button class="btn-update-status-split-dropdown">
-                  <span>Update Status</span>
-                  <span class="dropdown-arrow-divider-icon">▼</span>
-                </button>
-              </div>
-            </aside>
+            <aside
+              class="order-details-sticky-panel"
+              id="orderDetailsPanel"
+              aria-hidden="true"
+            ></aside>
           </div>
         </div>
       </div>
     </div>
     <script src="js/dashboard-shared.js"></script>
+    <script src="js/orders.js"></script>
   </body>
 </html>

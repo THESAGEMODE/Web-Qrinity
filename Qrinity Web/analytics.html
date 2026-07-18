@@ -17,22 +17,46 @@
     <div class="db-container">
       <aside class="db-sidebar" id="sidebar">
         <div class="db-sidebar-brand">
-          <svg
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2.5"
-            class="db-brand-icon"
+          <button
+            type="button"
+            class="db-brand-logo"
+            id="sidebarBrandToggle"
+            aria-label="Qrinity"
           >
-            <rect x="3" y="3" width="7" height="7"></rect>
-            <rect x="14" y="3" width="7" height="7"></rect>
-            <rect x="3" y="14" width="7" height="7"></rect>
-            <path d="M14 14h3v3h-3zM20 14v3M14 20h7"></path>
-          </svg>
-          <div>
-            <span class="db-brand-name">Qrinty</span>
-            <small class="db-brand-sub">Restaurant Admin</small>
-          </div>
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.5"
+              class="db-brand-icon"
+            >
+              <rect x="3" y="3" width="7" height="7"></rect>
+              <rect x="14" y="3" width="7" height="7"></rect>
+              <rect x="3" y="14" width="7" height="7"></rect>
+              <path d="M14 14h3v3h-3zM20 14v3M14 20h7"></path>
+            </svg>
+            <div class="db-brand-text">
+              <span class="db-brand-name">Qrinty</span>
+              <small class="db-brand-sub">Restaurant Admin</small>
+            </div>
+          </button>
+          <button
+            type="button"
+            class="sidebar-close-btn"
+            id="closeSidebar"
+            aria-label="Tutup sidebar"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+              <line x1="9" y1="3" x2="9" y2="21"></line>
+              <polyline points="13 8 17 12 13 16"></polyline>
+            </svg>
+          </button>
         </div>
 
         <nav class="db-sidebar-nav">
@@ -253,461 +277,287 @@
         </header>
 
         <div class="db-body-content">
-          <div class="analytics-header">
-            <div class="header-titles">
-              <h1>Analytics Overview</h1>
-              <p>Track your sales performance, orders, and business growth.</p>
+          <!-- PAGE TITLE ROW -->
+          <div class="rpt-welcome-row">
+            <div>
+              <h1 class="rpt-page-title">Reports</h1>
+              <p class="rpt-page-sub">Track your restaurant performance and sales analytics</p>
             </div>
-            <div class="header-actions">
-              <div class="custom-select-wrapper">
-                <select class="time-filter">
-                  <option value="today">Today</option>
-                  <option value="this_week">This Week</option>
-                  <option value="this_month" selected>This Month</option>
-                  <option value="this_year">This Year</option>
-                </select>
-                <svg
-                  class="select-chevron"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                >
+          </div>
+
+          <!-- KPI CARDS ROW -->
+          <div class="rpt-kpi-grid">
+            <div class="rpt-kpi-card">
+              <div class="rpt-kpi-icon icon-purple-bg">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
+                </svg>
+              </div>
+              <div class="rpt-kpi-info">
+                <span class="rpt-kpi-label">Total Revenue</span>
+                <h3 class="rpt-kpi-value">Rp 24.850.000</h3>
+                <small class="rpt-kpi-trend trend-up">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>
+                  +12.5% from last week
+                </small>
+              </div>
+            </div>
+            <div class="rpt-kpi-card">
+              <div class="rpt-kpi-icon icon-blue-bg">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                  <polyline points="14 2 14 8 21 8"></polyline>
+                  <line x1="16" y1="13" x2="8" y2="13"></line>
+                  <line x1="16" y1="17" x2="8" y2="17"></line>
+                </svg>
+              </div>
+              <div class="rpt-kpi-info">
+                <span class="rpt-kpi-label">Total Orders</span>
+                <h3 class="rpt-kpi-value">1.248</h3>
+                <small class="rpt-kpi-trend trend-up">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>
+                  +8.2% from last week
+                </small>
+              </div>
+            </div>
+            <div class="rpt-kpi-card">
+              <div class="rpt-kpi-icon icon-orange-bg">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="9" cy="21" r="1"></circle>
+                  <circle cx="20" cy="21" r="1"></circle>
+                  <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                </svg>
+              </div>
+              <div class="rpt-kpi-info">
+                <span class="rpt-kpi-label">Average Order Value</span>
+                <h3 class="rpt-kpi-value">Rp 19.940</h3>
+                <small class="rpt-kpi-trend trend-up">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>
+                  +4.3% from last week
+                </small>
+              </div>
+            </div>
+            <div class="rpt-kpi-card">
+              <div class="rpt-kpi-icon icon-teal-bg">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="9" cy="7" r="4"></circle>
+                </svg>
+              </div>
+              <div class="rpt-kpi-info">
+                <span class="rpt-kpi-label">Total Customers</span>
+                <h3 class="rpt-kpi-value">892</h3>
+                <small class="rpt-kpi-trend trend-up">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>
+                  +6.7% from last week
+                </small>
+              </div>
+            </div>
+          </div>
+
+          <!-- TIME RANGE SELECTOR -->
+          <div class="rpt-range-bar">
+            <div class="rpt-range-buttons">
+              <button class="rpt-range-btn">Today</button>
+              <button class="rpt-range-btn">Yesterday</button>
+              <button class="rpt-range-btn active">This Week</button>
+              <button class="rpt-range-btn">This Month</button>
+              <button class="rpt-range-btn">Custom Range</button>
+            </div>
+            <div class="rpt-range-actions">
+              <div class="rpt-outlet-dropdown">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+                  <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                  <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                </svg>
+                <span>All Outlets</span>
+                <svg class="dropdown-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="14" height="14">
                   <polyline points="6 9 12 15 18 9"></polyline>
                 </svg>
               </div>
-              <button class="btn-primary-export">
-                <svg
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  width="16"
-                  height="16"
-                >
+              <button class="rpt-export-btn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
                   <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
                   <polyline points="7 10 12 15 17 10"></polyline>
                   <line x1="12" y1="15" x2="12" y2="3"></line>
                 </svg>
-                Export Report
+                Export
               </button>
             </div>
           </div>
 
-          <div class="analytics-stats-grid">
-            <div class="a-stat-card">
-              <div class="stat-top">
-                <div class="icon-wrap bg-purple-light">
-                  <svg
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                  >
-                    <line x1="12" y1="1" x2="12" y2="23"></line>
-                    <path
-                      d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"
-                    ></path>
-                  </svg>
-                </div>
-                <div class="trend-badge positive">
-                  <svg
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                  >
-                    <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
-                    <polyline points="17 6 23 6 23 12"></polyline>
-                  </svg>
-                  12.5%
+          <!-- THREE CHART PANELS -->
+          <div class="rpt-charts-grid">
+            <!-- Revenue Overview -->
+            <div class="rpt-chart-card chart-revenue">
+              <div class="rpt-chart-head">
+                <h3>Revenue Overview</h3>
+                <div class="rpt-chart-legend-inline">
+                  <span class="legend-dot-line solid-line"></span> This Week
+                  <span class="legend-dot-line dashed-line"></span> Last Week
                 </div>
               </div>
-              <div class="stat-info">
-                <p class="stat-label">Total Revenue</p>
-                <h3 class="stat-value">Rp 124.500.000</h3>
-              </div>
-            </div>
-
-            <div class="a-stat-card">
-              <div class="stat-top">
-                <div class="icon-wrap bg-blue-light">
-                  <svg
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                  >
-                    <path
-                      d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"
-                    ></path>
-                    <polyline points="14 2 14 8 21 8"></polyline>
-                    <line x1="16" y1="13" x2="8" y2="13"></line>
-                    <line x1="16" y1="17" x2="8" y2="17"></line>
-                  </svg>
-                </div>
-                <div class="trend-badge positive">
-                  <svg
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                  >
-                    <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
-                    <polyline points="17 6 23 6 23 12"></polyline>
-                  </svg>
-                  8.2%
-                </div>
-              </div>
-              <div class="stat-info">
-                <p class="stat-label">Total Orders</p>
-                <h3 class="stat-value">1,842</h3>
-              </div>
-            </div>
-
-            <div class="a-stat-card">
-              <div class="stat-top">
-                <div class="icon-wrap bg-orange-light">
-                  <svg
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                  >
-                    <circle cx="9" cy="21" r="1"></circle>
-                    <circle cx="20" cy="21" r="1"></circle>
-                    <path
-                      d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"
-                    ></path>
-                  </svg>
-                </div>
-                <div class="trend-badge negative">
-                  <svg
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                  >
-                    <polyline points="23 18 13.5 8.5 8.5 13.5 1 6"></polyline>
-                    <polyline points="17 18 23 18 23 12"></polyline>
-                  </svg>
-                  1.4%
-                </div>
-              </div>
-              <div class="stat-info">
-                <p class="stat-label">Average Order Value</p>
-                <h3 class="stat-value">Rp 67.500</h3>
-              </div>
-            </div>
-
-            <div class="a-stat-card">
-              <div class="stat-top">
-                <div class="icon-wrap bg-teal-light">
-                  <svg
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                  >
-                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                    <circle cx="9" cy="7" r="4"></circle>
-                  </svg>
-                </div>
-                <div class="trend-badge positive">
-                  <svg
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                  >
-                    <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
-                    <polyline points="17 6 23 6 23 12"></polyline>
-                  </svg>
-                  24.5%
-                </div>
-              </div>
-              <div class="stat-info">
-                <p class="stat-label">Total Customers</p>
-                <h3 class="stat-value">845</h3>
-              </div>
-            </div>
-          </div>
-
-          <div class="analytics-charts-container">
-            <div class="chart-box main-chart">
-              <div class="chart-header">
-                <h3>Revenue Trends</h3>
-                <button class="btn-icon">
-                  <svg
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                  >
-                    <circle cx="12" cy="12" r="1"></circle>
-                    <circle cx="19" cy="12" r="1"></circle>
-                    <circle cx="5" cy="12" r="1"></circle>
-                  </svg>
-                </button>
-              </div>
-              <div class="chart-body line-chart-placeholder">
-                <svg viewBox="0 0 100 40" class="svg-line-chart">
-                  <path
-                    d="M0 35 L 10 25 L 20 30 L 30 15 L 40 20 L 50 10 L 60 25 L 70 5 L 80 15 L 90 2 L 100 10 L 100 40 L 0 40 Z"
-                    fill="rgba(92,51,227,0.1)"
-                    stroke="none"
-                  />
-                  <path
-                    d="M0 35 L 10 25 L 20 30 L 30 15 L 40 20 L 50 10 L 60 25 L 70 5 L 80 15 L 90 2 L 100 10"
-                    fill="none"
-                    stroke="#5c33e3"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
+              <div class="rpt-chart-body">
+                <svg viewBox="0 0 700 220" class="rpt-line-svg" preserveAspectRatio="none">
+                  <!-- Grid lines -->
+                  <line x1="40" y1="20" x2="680" y2="20" stroke="#f0f0f5" stroke-width="1"/>
+                  <line x1="40" y1="65" x2="680" y2="65" stroke="#f0f0f5" stroke-width="1"/>
+                  <line x1="40" y1="110" x2="680" y2="110" stroke="#f0f0f5" stroke-width="1"/>
+                  <line x1="40" y1="155" x2="680" y2="155" stroke="#f0f0f5" stroke-width="1"/>
+                  <line x1="40" y1="200" x2="680" y2="200" stroke="#f0f0f5" stroke-width="1"/>
+                  <!-- Y labels -->
+                  <text x="30" y="24" text-anchor="end" fill="#9ca3af" font-size="10">Rp 25M</text>
+                  <text x="30" y="69" text-anchor="end" fill="#9ca3af" font-size="10">Rp 20M</text>
+                  <text x="30" y="114" text-anchor="end" fill="#9ca3af" font-size="10">Rp 15M</text>
+                  <text x="30" y="159" text-anchor="end" fill="#9ca3af" font-size="10">Rp 10M</text>
+                  <text x="30" y="204" text-anchor="end" fill="#9ca3af" font-size="10">Rp 0</text>
+                  <!-- Last Week (dashed) -->
+                  <polyline points="80,150 170,130 260,140 350,110 440,120 530,95 620,105" fill="none" stroke="#c4b5fd" stroke-width="2" stroke-dasharray="6,4" stroke-linecap="round"/>
+                  <!-- This Week (solid + area) -->
+                  <path d="M80,130 L170,100 L260,110 L350,70 L440,85 L530,45 L620,60 L620,200 L80,200 Z" fill="rgba(109,62,243,0.08)"/>
+                  <polyline points="80,130 170,100 260,110 350,70 440,85 530,45 620,60" fill="none" stroke="#6d3ef3" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  <!-- Dots -->
+                  <circle cx="80" cy="130" r="4" fill="#6d3ef3"/><circle cx="170" cy="100" r="4" fill="#6d3ef3"/>
+                  <circle cx="260" cy="110" r="4" fill="#6d3ef3"/><circle cx="350" cy="70" r="4" fill="#6d3ef3"/>
+                  <circle cx="440" cy="85" r="4" fill="#6d3ef3"/><circle cx="530" cy="45" r="4" fill="#6d3ef3"/>
+                  <circle cx="620" cy="60" r="4" fill="#6d3ef3"/>
+                  <!-- X labels -->
+                  <text x="80" y="218" text-anchor="middle" fill="#9ca3af" font-size="10">Mon</text>
+                  <text x="170" y="218" text-anchor="middle" fill="#9ca3af" font-size="10">Tue</text>
+                  <text x="260" y="218" text-anchor="middle" fill="#9ca3af" font-size="10">Wed</text>
+                  <text x="350" y="218" text-anchor="middle" fill="#9ca3af" font-size="10">Thu</text>
+                  <text x="440" y="218" text-anchor="middle" fill="#9ca3af" font-size="10">Fri</text>
+                  <text x="530" y="218" text-anchor="middle" fill="#9ca3af" font-size="10">Sat</text>
+                  <text x="620" y="218" text-anchor="middle" fill="#9ca3af" font-size="10">Sun</text>
                 </svg>
-                <div class="x-axis-labels">
-                  <span>Week 1</span>
-                  <span>Week 2</span>
-                  <span>Week 3</span>
-                  <span>Week 4</span>
+              </div>
+            </div>
+
+            <!-- Orders Overview -->
+            <div class="rpt-chart-card chart-orders">
+              <div class="rpt-chart-head">
+                <h3>Orders Overview</h3>
+                <span class="rpt-chart-toggle">Hourly</span>
+              </div>
+              <div class="rpt-chart-body rpt-bar-body">
+                <div class="rpt-bar-chart">
+                  <div class="rpt-bar-col" style="--bar-h:15%"><span class="bar-val">8</span></div>
+                  <div class="rpt-bar-col" style="--bar-h:20%"><span class="bar-val">12</span></div>
+                  <div class="rpt-bar-col" style="--bar-h:35%"><span class="bar-val">22</span></div>
+                  <div class="rpt-bar-col" style="--bar-h:50%"><span class="bar-val">32</span></div>
+                  <div class="rpt-bar-col" style="--bar-h:75%"><span class="bar-val">48</span></div>
+                  <div class="rpt-bar-col" style="--bar-h:90%"><span class="bar-val">58</span></div>
+                  <div class="rpt-bar-col" style="--bar-h:100%"><span class="bar-val">64</span></div>
+                  <div class="rpt-bar-col" style="--bar-h:85%"><span class="bar-val">54</span></div>
+                  <div class="rpt-bar-col" style="--bar-h:70%"><span class="bar-val">45</span></div>
+                  <div class="rpt-bar-col" style="--bar-h:60%"><span class="bar-val">38</span></div>
+                  <div class="rpt-bar-col" style="--bar-h:80%"><span class="bar-val">52</span></div>
+                  <div class="rpt-bar-col" style="--bar-h:95%"><span class="bar-val">62</span></div>
+                </div>
+                <div class="rpt-bar-labels">
+                  <span>00</span><span>02</span><span>04</span><span>06</span><span>08</span><span>10</span><span>12</span><span>14</span><span>16</span><span>18</span><span>20</span><span>22</span>
                 </div>
               </div>
             </div>
 
-            <div class="chart-box side-chart">
-              <div class="chart-header">
-                <h3>Orders by Category</h3>
-                <button class="btn-icon">
-                  <svg
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                  >
-                    <circle cx="12" cy="12" r="1"></circle>
-                    <circle cx="19" cy="12" r="1"></circle>
-                    <circle cx="5" cy="12" r="1"></circle>
-                  </svg>
-                </button>
+            <!-- Orders by Payment Method -->
+            <div class="rpt-chart-card chart-payment">
+              <div class="rpt-chart-head">
+                <h3>Orders by Payment Method</h3>
               </div>
-              <div class="chart-body donut-chart-placeholder">
-                <div class="donut-wrapper">
-                  <div class="donut-chart">
-                    <div class="donut-inner">
-                      <span class="donut-total">1,842</span>
-                      <small>Orders</small>
+              <div class="rpt-chart-body rpt-donut-body">
+                <div class="rpt-donut-wrap">
+                  <div class="rpt-donut">
+                    <div class="rpt-donut-center">
+                      <strong>1.248</strong>
+                      <small>Total</small>
                     </div>
                   </div>
                 </div>
-                <div class="chart-legend">
-                  <div class="legend-item">
-                    <span class="dot" style="background-color: #5c33e3"></span>
-                    <span class="label">Main Course (45%)</span>
+                <div class="rpt-donut-legend">
+                  <div class="rpt-legend-row">
+                    <span class="legend-color" style="background:#6d3ef3"></span>
+                    <span class="legend-name">Cash</span>
+                    <span class="legend-val">Rp 10.250.000</span>
+                    <span class="legend-pct">41%</span>
                   </div>
-                  <div class="legend-item">
-                    <span class="dot" style="background-color: #f59e0b"></span>
-                    <span class="label">Beverages (30%)</span>
+                  <div class="rpt-legend-row">
+                    <span class="legend-color" style="background:#10b981"></span>
+                    <span class="legend-name">QRIS</span>
+                    <span class="legend-val">Rp 8.760.000</span>
+                    <span class="legend-pct">35%</span>
                   </div>
-                  <div class="legend-item">
-                    <span class="dot" style="background-color: #10b981"></span>
-                    <span class="label">Appetizers (15%)</span>
+                  <div class="rpt-legend-row">
+                    <span class="legend-color" style="background:#f59e0b"></span>
+                    <span class="legend-name">Card</span>
+                    <span class="legend-val">Rp 4.980.000</span>
+                    <span class="legend-pct">20%</span>
                   </div>
-                  <div class="legend-item">
-                    <span class="dot" style="background-color: #3b82f6"></span>
-                    <span class="label">Desserts (10%)</span>
+                  <div class="rpt-legend-row">
+                    <span class="legend-color" style="background:#9ca3af"></span>
+                    <span class="legend-name">Other</span>
+                    <span class="legend-val">Rp 860.000</span>
+                    <span class="legend-pct">4%</span>
                   </div>
                 </div>
               </div>
             </div>
           </div>
 
-          <div class="analytics-table-card">
-            <div class="card-header">
-              <h3>Top Selling Items</h3>
-              <a href="#" class="view-all-link">View All Items</a>
-            </div>
-            <div class="table-responsive">
-              <table class="a-table">
-                <thead>
-                  <tr>
-                    <th>Item Name</th>
-                    <th>Category</th>
-                    <th>Units Sold</th>
-                    <th>Revenue</th>
-                    <th>Trend</th>
-                  </tr>
-                </thead>
+          <!-- THREE DATA TABLES -->
+          <div class="rpt-tables-grid">
+            <!-- Top Selling Menu -->
+            <div class="rpt-table-card">
+              <div class="rpt-table-head">
+                <h3>Top Selling Menu</h3>
+                <a href="#" class="rpt-view-all">View All</a>
+              </div>
+              <table class="rpt-data-table">
+                <thead><tr><th>#</th><th>Menu</th><th>Orders</th><th>Revenue</th></tr></thead>
                 <tbody>
-                  <tr>
-                    <td>
-                      <div class="item-name-cell">
-                        <div class="item-img-placeholder">
-                          <svg
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            stroke-width="2"
-                          >
-                            <rect
-                              x="3"
-                              y="3"
-                              width="18"
-                              height="18"
-                              rx="2"
-                              ry="2"
-                            ></rect>
-                            <circle cx="8.5" cy="8.5" r="1.5"></circle>
-                            <polyline points="21 15 16 10 5 21"></polyline>
-                          </svg>
-                        </div>
-                        <span class="fw-semibold">Nasi Goreng Spesial</span>
-                      </div>
-                    </td>
-                    <td><span class="category-tag">Main Course</span></td>
-                    <td>425</td>
-                    <td class="text-purple fw-semibold">Rp 19.125.000</td>
-                    <td>
-                      <span class="trend-badge positive-sm"
-                        ><svg
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          stroke-width="2"
-                        >
-                          <polyline
-                            points="23 6 13.5 15.5 8.5 10.5 1 18"
-                          ></polyline>
-                          <polyline points="17 6 23 6 23 12"></polyline></svg
-                      ></span>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="item-name-cell">
-                        <div class="item-img-placeholder">
-                          <svg
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            stroke-width="2"
-                          >
-                            <rect
-                              x="3"
-                              y="3"
-                              width="18"
-                              height="18"
-                              rx="2"
-                              ry="2"
-                            ></rect>
-                            <circle cx="8.5" cy="8.5" r="1.5"></circle>
-                            <polyline points="21 15 16 10 5 21"></polyline>
-                          </svg>
-                        </div>
-                        <span class="fw-semibold">Es Teh Manis Jumbo</span>
-                      </div>
-                    </td>
-                    <td><span class="category-tag">Beverages</span></td>
-                    <td>380</td>
-                    <td class="text-purple fw-semibold">Rp 3.800.000</td>
-                    <td>
-                      <span class="trend-badge positive-sm"
-                        ><svg
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          stroke-width="2"
-                        >
-                          <polyline
-                            points="23 6 13.5 15.5 8.5 10.5 1 18"
-                          ></polyline>
-                          <polyline points="17 6 23 6 23 12"></polyline></svg
-                      ></span>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="item-name-cell">
-                        <div class="item-img-placeholder">
-                          <svg
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            stroke-width="2"
-                          >
-                            <rect
-                              x="3"
-                              y="3"
-                              width="18"
-                              height="18"
-                              rx="2"
-                              ry="2"
-                            ></rect>
-                            <circle cx="8.5" cy="8.5" r="1.5"></circle>
-                            <polyline points="21 15 16 10 5 21"></polyline>
-                          </svg>
-                        </div>
-                        <span class="fw-semibold">Sate Ayam Madura</span>
-                      </div>
-                    </td>
-                    <td><span class="category-tag">Main Course</span></td>
-                    <td>210</td>
-                    <td class="text-purple fw-semibold">Rp 7.350.000</td>
-                    <td>
-                      <span class="trend-badge negative-sm"
-                        ><svg
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          stroke-width="2"
-                        >
-                          <polyline
-                            points="23 18 13.5 8.5 8.5 13.5 1 6"
-                          ></polyline>
-                          <polyline points="17 18 23 18 23 12"></polyline></svg
-                      ></span>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="item-name-cell">
-                        <div class="item-img-placeholder">
-                          <svg
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            stroke-width="2"
-                          >
-                            <rect
-                              x="3"
-                              y="3"
-                              width="18"
-                              height="18"
-                              rx="2"
-                              ry="2"
-                            ></rect>
-                            <circle cx="8.5" cy="8.5" r="1.5"></circle>
-                            <polyline points="21 15 16 10 5 21"></polyline>
-                          </svg>
-                        </div>
-                        <span class="fw-semibold">Kentang Goreng</span>
-                      </div>
-                    </td>
-                    <td><span class="category-tag">Appetizers</span></td>
-                    <td>195</td>
-                    <td class="text-purple fw-semibold">Rp 3.900.000</td>
-                    <td>
-                      <span class="trend-badge neutral-sm"
-                        ><svg
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          stroke-width="2"
-                        >
-                          <line x1="5" y1="12" x2="19" y2="12"></line></svg
-                      ></span>
-                    </td>
-                  </tr>
+                  <tr><td>1</td><td><div class="rpt-menu-cell"><div class="rpt-menu-thumb" style="background-image:url('https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=80')"></div><span>Beef Steak</span></div></td><td>156</td><td class="rpt-rev">Rp 3.120.000</td></tr>
+                  <tr><td>2</td><td><div class="rpt-menu-cell"><div class="rpt-menu-thumb" style="background-image:url('https://images.unsplash.com/photo-1567620832904-9fe5cf7bcfe6?w=80')"></div><span>Chicken Wings</span></div></td><td>142</td><td class="rpt-rev">Rp 2.560.000</td></tr>
+                  <tr><td>3</td><td><div class="rpt-menu-cell"><div class="rpt-menu-thumb" style="background-image:url('https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?w=80')"></div><span>Spaghetti Carbonara</span></div></td><td>118</td><td class="rpt-rev">Rp 1.890.000</td></tr>
+                  <tr><td>4</td><td><div class="rpt-menu-cell"><div class="rpt-menu-thumb" style="background-image:url('https://images.unsplash.com/photo-1573080496219-bf080df97061?w=80')"></div><span>French Fries</span></div></td><td>102</td><td class="rpt-rev">Rp 1.120.000</td></tr>
+                  <tr><td>5</td><td><div class="rpt-menu-cell"><div class="rpt-menu-thumb" style="background-image:url('https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?w=80')"></div><span>Iced Lemon Tea</span></div></td><td>98</td><td class="rpt-rev">Rp 980.000</td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <!-- Sales by Category -->
+            <div class="rpt-table-card">
+              <div class="rpt-table-head">
+                <h3>Sales by Category</h3>
+                <a href="#" class="rpt-view-all">View All</a>
+              </div>
+              <table class="rpt-data-table">
+                <thead><tr><th>Category</th><th>Orders</th><th>Revenue</th></tr></thead>
+                <tbody>
+                  <tr><td><div class="rpt-cat-cell"><span class="rpt-cat-icon icon-purple-bg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M18 8h1a4 4 0 0 1 0 8h-1"></path><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path></svg></span>Main Course</div></td><td>486</td><td class="rpt-rev">Rp 12.850.000</td></tr>
+                  <tr><td><div class="rpt-cat-cell"><span class="rpt-cat-icon icon-orange-bg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M12 2L2 7l10 5 10-5-10-5z"></path></svg></span>Snacks</div></td><td>284</td><td class="rpt-rev">Rp 5.320.000</td></tr>
+                  <tr><td><div class="rpt-cat-cell"><span class="rpt-cat-icon icon-blue-bg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M17 8l2 12H5L7 8h10z"></path><path d="M12 2v6"></path></svg></span>Drinks</div></td><td>312</td><td class="rpt-rev">Rp 4.980.000</td></tr>
+                  <tr><td><div class="rpt-cat-cell"><span class="rpt-cat-icon icon-teal-bg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><circle cx="12" cy="12" r="10"></circle></svg></span>Desserts</div></td><td>128</td><td class="rpt-rev">Rp 1.980.000</td></tr>
+                  <tr><td><div class="rpt-cat-cell"><span class="rpt-cat-icon" style="background:#f3f4f6;color:#6b7280"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><rect x="3" y="3" width="18" height="18" rx="2"></rect></svg></span>Others</div></td><td>38</td><td class="rpt-rev">Rp 720.000</td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <!-- Daily Summary -->
+            <div class="rpt-table-card">
+              <div class="rpt-table-head">
+                <h3>Daily Summary</h3>
+                <a href="#" class="rpt-view-all">View All</a>
+              </div>
+              <table class="rpt-data-table">
+                <thead><tr><th>Date</th><th>Orders</th><th>Revenue</th></tr></thead>
+                <tbody>
+                  <tr><td>Mon, May 20, 2024</td><td>152</td><td class="rpt-rev">Rp 2.650.000</td></tr>
+                  <tr><td>Tue, May 21, 2024</td><td>168</td><td class="rpt-rev">Rp 2.980.000</td></tr>
+                  <tr><td>Wed, May 22, 2024</td><td>175</td><td class="rpt-rev">Rp 3.250.000</td></tr>
+                  <tr><td>Thu, May 23, 2024</td><td>189</td><td class="rpt-rev">Rp 3.760.000</td></tr>
+                  <tr><td>Fri, May 24, 2024</td><td>210</td><td class="rpt-rev">Rp 4.250.000</td></tr>
+                  <tr><td>Sat, May 25, 2024</td><td>248</td><td class="rpt-rev">Rp 5.320.000</td></tr>
+                  <tr><td>Sun, May 26, 2024</td><td>106</td><td class="rpt-rev">Rp 2.640.000</td></tr>
                 </tbody>
               </table>
             </div>

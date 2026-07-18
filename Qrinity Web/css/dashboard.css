@@ -73,12 +73,17 @@ body {
 }
 
 .db-sidebar.closed .db-sidebar-brand {
-  padding: 24px 14px;
+  padding: 20px 12px;
   justify-content: center;
 }
 
-.db-sidebar.closed .db-sidebar-brand > div {
+.db-sidebar.closed .db-brand-text {
   display: none;
+}
+
+.db-sidebar.closed .db-brand-logo {
+  flex: 0;
+  justify-content: center;
 }
 
 .db-sidebar.closed .db-sidebar-nav {
@@ -116,17 +121,76 @@ body {
 }
 
 .db-sidebar-brand {
-  padding: 24px;
+  padding: 20px 16px 20px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.db-brand-logo {
   display: flex;
   align-items: center;
   gap: 12px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  background: none;
+  border: none;
+  color: inherit;
+  padding: 0;
+  min-width: 0;
+  flex: 1;
+  text-align: left;
+}
+
+.db-brand-logo.can-expand {
+  cursor: pointer;
+  border-radius: 10px;
+  padding: 4px;
+  margin: -4px;
+  transition: background-color 0.2s ease;
+}
+
+.db-brand-logo.can-expand:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.db-brand-text {
+  min-width: 0;
+}
+
+.sidebar-close-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  border: none;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.sidebar-close-btn:hover {
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.sidebar-close-btn svg {
+  width: 18px;
+  height: 18px;
+}
+
+.db-sidebar.closed .sidebar-close-btn {
+  display: none;
 }
 
 .db-brand-icon {
   width: 34px;
   height: 34px;
   color: #fff;
+  flex-shrink: 0;
 }
 
 .db-brand-name {
@@ -217,7 +281,7 @@ body {
 }
 
 .db-main-wrapper.sidebar-closed {
-  margin-left: 0;
+  margin-left: var(--sidebar-collapsed-width);
 }
 
 /* NAVBAR ATAS */
@@ -246,7 +310,7 @@ body {
   border: none;
   cursor: pointer;
   color: var(--clr-dark);
-  display: block;
+  display: none;
 }
 .menu-toggle-trigger svg {
   width: 24px;

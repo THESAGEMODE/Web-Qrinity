@@ -1025,27 +1025,81 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Sidebar toggle support for desktop and mobile
     const toggleSidebar = document.getElementById("toggleSidebar");
+    const closeSidebar = document.getElementById("closeSidebar");
+    const sidebarBrandToggle = document.getElementById("sidebarBrandToggle");
     const sidebar = document.getElementById("sidebar");
     const mainWrapper = document.querySelector(".db-main-wrapper");
 
-    if (toggleSidebar && sidebar && mainWrapper) {
-        toggleSidebar.addEventListener("click", () => {
-            if (window.innerWidth >= 992) {
-                const isClosed = sidebar.classList.toggle("closed");
-                sidebar.classList.remove("mobile-open");
-                mainWrapper.classList.toggle("sidebar-closed", isClosed);
+    const isDesktopSidebar = () => window.innerWidth >= 992;
+
+    const syncSidebarBrandState = () => {
+        if (!sidebarBrandToggle || !sidebar) return;
+        const canExpand = isDesktopSidebar() && sidebar.classList.contains("closed");
+        sidebarBrandToggle.classList.toggle("can-expand", canExpand);
+        sidebarBrandToggle.setAttribute(
+            "aria-label",
+            canExpand ? "Buka sidebar" : "Qrinity"
+        );
+    };
+
+    const setSidebarState = ({ closed, mobileOpen } = {}) => {
+        if (!sidebar || !mainWrapper) return;
+
+        if (isDesktopSidebar()) {
+            if (typeof closed === "boolean") {
+                sidebar.classList.toggle("closed", closed);
+                mainWrapper.classList.toggle("sidebar-closed", closed);
+            }
+            sidebar.classList.remove("mobile-open");
+        } else {
+            if (typeof mobileOpen === "boolean") {
+                sidebar.classList.toggle("mobile-open", mobileOpen);
+            }
+            sidebar.classList.remove("closed");
+            mainWrapper.classList.remove("sidebar-closed");
+        }
+
+        syncSidebarBrandState();
+    };
+
+    const toggleSidebarPanel = () => {
+        if (isDesktopSidebar()) {
+            setSidebarState({ closed: !sidebar.classList.contains("closed") });
+        } else {
+            setSidebarState({ mobileOpen: !sidebar.classList.contains("mobile-open") });
+        }
+    };
+
+    if (sidebar && mainWrapper) {
+        if (toggleSidebar) {
+            toggleSidebar.addEventListener("click", toggleSidebarPanel);
+        }
+
+        if (closeSidebar) {
+            closeSidebar.addEventListener("click", () => {
+                if (isDesktopSidebar()) {
+                    setSidebarState({ closed: true });
+                }
+            });
+        }
+
+        if (sidebarBrandToggle) {
+            sidebarBrandToggle.addEventListener("click", () => {
+                if (isDesktopSidebar() && sidebar.classList.contains("closed")) {
+                    setSidebarState({ closed: false });
+                }
+            });
+        }
+
+        window.addEventListener("resize", () => {
+            if (!isDesktopSidebar()) {
+                setSidebarState({ closed: false, mobileOpen: false });
             } else {
-                sidebar.classList.toggle("mobile-open");
-                sidebar.classList.remove("closed");
+                syncSidebarBrandState();
             }
         });
 
-        window.addEventListener("resize", () => {
-            if (window.innerWidth < 992) {
-                sidebar.classList.remove("closed");
-                mainWrapper.classList.remove("sidebar-closed");
-            }
-        });
+        syncSidebarBrandState();
     }
 
     // Initial render
