@@ -324,6 +324,14 @@
 .order-id-txt {
   font-weight: 700;
   color: #6d3ef3;
+  white-space: nowrap;
+  display: inline-block;
+}
+
+.orders-main-data-table th:first-child,
+.orders-main-data-table td:first-child {
+  min-width: 96px;
+  width: 96px;
 }
 
 /* CUSTOMER PROFILE CELL GROUP */
@@ -331,10 +339,25 @@
   display: flex;
   align-items: center;
   gap: 10px;
+  min-width: 140px;
+}
+
+.customer-profile-cell > div:last-child {
+  min-width: 0;
+  overflow: hidden;
+}
+
+.customer-profile-cell .cust-name-title {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .cust-avatar-frame {
   width: 32px;
   height: 32px;
+  min-width: 32px;
+  min-height: 32px;
+  flex-shrink: 0;
   border-radius: 50%;
   background-size: cover;
   background-position: center;

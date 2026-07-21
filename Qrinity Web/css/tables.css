@@ -518,8 +518,88 @@
   cursor: pointer;
 }
 
+@media (max-width: 992px) {
+  .tables-utility-bar {
+    flex-wrap: wrap;
+  }
+  .filter-actions-group {
+    flex-wrap: wrap;
+    width: 100%;
+  }
+  .status-dropdown {
+    flex: 1 1 140px;
+    min-width: 0;
+  }
+  .btn-secondary-filter {
+    flex: 1 1 0;
+    justify-content: center;
+  }
+  .tables-card-grid {
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .tables-utility-bar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+  .search-box-wrapper {
+    max-width: 100%;
+  }
+  .filter-actions-group {
+    flex-direction: column;
+    width: 100%;
+  }
+  .status-dropdown,
+  .btn-secondary-filter {
+    width: 100%;
+    min-width: 0;
+    justify-content: center;
+  }
+  .btn-primary-action-purple {
+    width: 100%;
+    justify-content: center;
+  }
+  .tables-card-grid {
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 12px;
+  }
+  .tbl-custom-card {
+    padding: 16px;
+  }
+  .tbl-qr-wrapper {
+    padding: 14px;
+  }
+  .qr-image {
+    width: 120px;
+    height: 120px;
+  }
+}
+
+@media (max-width: 576px) {
+  .tables-card-grid {
+    grid-template-columns: 1fr;
+  }
+  .tbl-card-actions {
+    flex-direction: column;
+    gap: 8px;
+  }
+  .tbl-card-footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+}
+
 @media (max-width: 600px) {
   .form-row-2 {
     grid-template-columns: 1fr;
+  }
+  .modal-container-sm {
+    margin: 0 12px;
+    max-width: calc(100% - 24px);
   }
 }

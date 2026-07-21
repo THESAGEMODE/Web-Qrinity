@@ -352,7 +352,8 @@ body {
 
 .navbar-search {
   position: relative;
-  width: 360px;
+  width: 100%;
+  max-width: 360px;
 }
 .navbar-search svg {
   position: absolute;
@@ -1314,8 +1315,33 @@ input:checked + .toggle-slider:before {
   .db-main-wrapper {
     margin-left: 0;
   }
+  .db-main-wrapper.sidebar-closed {
+    margin-left: 0;
+  }
   .menu-toggle-trigger {
     display: block;
+  }
+  /* Mobile sidebar overlay backdrop */
+  .sidebar-overlay {
+    display: block;
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(30, 30, 45, 0.4);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.25s ease, visibility 0.25s ease;
+  }
+  .sidebar-overlay.is-visible {
+    opacity: 1;
+    visibility: visible;
+  }
+  .content-welcome-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
   }
 }
 
@@ -1326,11 +1352,204 @@ input:checked + .toggle-slider:before {
   .navbar-search {
     display: none;
   }
+  .navbar-center {
+    display: none;
+  }
   .db-body-content {
     padding: 16px;
   }
   .db-navbar {
     padding: 0 16px;
+  }
+  .admin-profile .profile-meta {
+    display: none;
+  }
+  .stats-cards-grid {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 12px;
+  }
+  .stat-item-card {
+    padding: 16px;
+  }
+  .content-welcome-row h1 {
+    font-size: 22px;
+  }
+  /* Dashboard mobile cards & panels */
+  .block-card {
+    padding: 16px;
+  }
+  .card-title-row {
+    margin-bottom: 16px;
+  }
+  .card-title-row h3 {
+    font-size: 14px;
+  }
+  .qr-tables-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+  .db-data-table {
+    min-width: 600px;
+  }
+  .column-left,
+  .column-right {
+    gap: 16px;
+  }
+  .db-columns-grid {
+    gap: 16px;
+  }
+  .ranking-row {
+    gap: 8px;
+  }
+  .rank-thumb-image {
+    width: 38px;
+    height: 38px;
+  }
+  .rank-meta h4 {
+    font-size: 12px;
+  }
+  .rank-price {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 576px) {
+  .stats-cards-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .stat-item-card {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 14px;
+  }
+  .stat-value {
+    font-size: 18px;
+  }
+  .stat-label {
+    font-size: 11px;
+  }
+  .stat-trend small {
+    display: none;
+  }
+  .db-navbar {
+    padding: 0 12px;
+    gap: 8px;
+  }
+  .store-dropdown .store-title {
+    display: none;
+  }
+  .db-body-content {
+    padding: 12px;
+  }
+  /* Timeline compact */
+  .timeline-block {
+    flex-direction: column;
+    gap: 4px;
+  }
+  .timeline-time {
+    min-width: 0;
+    font-size: 11px;
+  }
+  .timeline-text {
+    font-size: 12px;
+  }
+  /* Date filter full-width */
+  .content-welcome-row {
+    gap: 10px;
+  }
+  .date-filter-box {
+    width: 100%;
+    justify-content: center;
+  }
+  .date-filter-box span {
+    font-size: 12px;
+  }
+  /* QR grid smaller */
+  .qr-tables-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  .qr-item-box {
+    padding: 12px;
+  }
+  .qr-graphics-wrap {
+    width: 72px;
+    height: 72px;
+  }
+  /* Block card more compact */
+  .block-card {
+    padding: 14px;
+  }
+  .sub-heading {
+    font-size: 12px;
+  }
+  /* Graph labels smaller */
+  .graph-bottom-labels {
+    font-size: 9px;
+  }
+  /* Toggle menu rows compact */
+  .toggle-menu-row {
+    gap: 10px;
+  }
+  .menu-food-avatar {
+    width: 40px;
+    height: 40px;
+  }
+  .menu-food-details h4 {
+    font-size: 12px;
+  }
+  /* Summary dark card */
+  .summary-stats-grid {
+    gap: 14px;
+  }
+  .summary-cell strong {
+    font-size: 13px;
+  }
+  .summary-cell small {
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .stats-cards-grid {
+    grid-template-columns: 1fr;
+  }
+  .qr-tables-grid {
+    grid-template-columns: 1fr;
+  }
+  .summary-stats-grid {
+    grid-template-columns: 1fr;
+  }
+  .content-welcome-row h1 {
+    font-size: 18px;
+  }
+  .db-navbar {
+    height: 56px;
+    padding: 0 10px;
+  }
+  .store-dropdown {
+    padding: 4px 10px;
+    gap: 6px;
+  }
+  .store-avatar {
+    width: 22px;
+    height: 22px;
+  }
+  .alert-bell-btn {
+    padding: 5px 7px;
+  }
+  .profile-avatar {
+    width: 32px;
+    height: 32px;
+  }
+  .icon-frame {
+    width: 40px;
+    height: 40px;
+  }
+  .icon-frame svg {
+    width: 18px;
+    height: 18px;
   }
 }
 

@@ -217,3 +217,55 @@
 .cat-switch-toggle input:checked + .cat-slider-round:before {
   transform: translateX(16px);
 }
+
+/* ================= RESPONSIVE BREAKPOINTS ================= */
+@media (max-width: 992px) {
+  .categories-utility-bar {
+    flex-wrap: wrap;
+  }
+  .search-box-wrapper {
+    max-width: 100%;
+    flex: 1 1 200px;
+  }
+  .categories-card-grid {
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .categories-utility-bar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+  .search-box-wrapper {
+    max-width: 100%;
+  }
+  .total-categories-pill {
+    align-self: flex-start;
+  }
+  .categories-card-grid {
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 12px;
+  }
+  .cat-custom-card {
+    padding: 16px;
+  }
+  .btn-primary-action-purple {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 576px) {
+  .categories-card-grid {
+    grid-template-columns: 1fr;
+  }
+  .cat-card-header {
+    margin-bottom: 12px;
+  }
+  .cat-card-desc {
+    margin-bottom: 14px;
+  }
+}
